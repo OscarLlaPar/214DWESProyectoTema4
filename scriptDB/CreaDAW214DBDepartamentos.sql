@@ -3,7 +3,7 @@ create database if not exists DAW214DBDepartamentos;
 
 
 SET GLOBAL validate_password.length = 2;
-SET GLOBAL validate_password.number.count = 0;
+SET GLOBAL validate_password.number_count = 0;
 SET GLOBAL validate_password.policy=LOW;
 
 create user 'usuarioDAW214DBDepartamentos'@'%' identified by 'paso';
