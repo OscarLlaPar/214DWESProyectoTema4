@@ -19,9 +19,15 @@ and open the template in the editor.
         <main>
             <table>
                 <tr>
-                    <td>Ejercicio 1 — Conexión a la base de datos con la cuenta usuario y tratamiento de errores</td>
-                    <td><a href="codigoPHP/ejercicio01.php"><img src="webroot/img/iconoPlay.png"></a></td>
-                    <td><a href="mostrarcodigo/muestraEjercicio01.php"><img src="webroot/img/iconoMostrar.png"></a></td>
+                    <td rowspan="2">Ejercicio 1 — Conexión a la base de datos con la cuenta usuario y tratamiento de errores</td>
+                    <th colspan="2">MySQLi</th>
+                    <th colspan="2">PDO</th>
+                </tr>
+                <tr>
+                    <td><a href="codigoPHP/ejercicio01MySQLi.php"><img src="webroot/img/iconoPlay.png"></a></td>
+                    <td><a href="mostrarcodigo/muestraEjercicio01MySQLi.php"><img src="webroot/img/iconoMostrar.png"></a></td>
+                    <td><a href="codigoPHP/ejercicio01PDO.php"><img src="webroot/img/iconoPlay.png"></a></td>
+                    <td><a href="mostrarcodigo/muestraEjercicio01PDO.php"><img src="webroot/img/iconoMostrar.png"></a></td>
                 </tr>
                 <tr>
                     <td>Ejercicio 2 — Mostrar el contenido de la tabla Departamento y el número de registros</td>
