@@ -7,7 +7,19 @@ and open the template in the editor.
 <html>
     <head>
         <meta charset="UTF-8">
-        <title></title>
+        <title>OLP-DWES - Ejercicio 2 (MySQLi)</title>
+        <style>
+            table,td,th{
+                border: solid black 1px;
+                border-collapse: collapse;
+            }
+            td,th{
+                padding: 5px;
+            }
+            th{
+                background-color: darkgray;
+            }
+        </style>
     </head>
     <body>
         <?php
@@ -16,15 +28,34 @@ and open the template in the editor.
             * @author Óscar Llamas Parra - oscar.llapar@educa.jcyl.es - https://github.com/OscarLlaPar
             * Última modificación: 04/11/2021
             */
-            define("HOST", "192.168.3.114");
-            define("USUARIO", "usuarioDAW214DBDepartamentos");
-            define("CONTRASENYA", "paso");
-            define("BASEDEDATOS", "DAW214DBDepartamentos");
+            include '../config/confDBMySQLi.php';
             //Establecimiento de la conexión 
-            $oConexionDB = mysqli_connect(HOST, USUARIO, CONTRASENYA, BASEDEDATOS);
+            $oConexionDB = mysqli_connect(HOST, USER, PASSWORD, DATABASE);
             
             $resultadoConsulta=$oConexionDB->query('SELECT * FROM Departamento');
-             
+            $registroArray = $resultadoConsulta->fetch_object();
+            echo "<table>";
+            echo "<tr>";
+            foreach ($registroArray as $clave => $valor) {
+                    
+                        echo "<th>$clave</th>";
+                    
+                    
+                }
+                echo "</tr>";
+            while(!is_null($registroArray)){
+                echo "<tr>";
+                foreach ($registroArray as $clave => $valor) {
+                    
+                        echo "<td>$valor</td>";
+                    
+                    
+                }
+                echo "</tr>";
+                $registroArray = $resultadoConsulta->fetch_object();
+            }
+            echo "</table>";
+            $resultadoConsulta->free();
             //Cerrar la conexión
             $oConexionDB->close();
         ?>

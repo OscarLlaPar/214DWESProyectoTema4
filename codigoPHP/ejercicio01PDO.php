@@ -11,12 +11,9 @@
             * @author Óscar Llamas Parra - oscar.llapar@educa.jcyl.es - https://github.com/OscarLlaPar
             * Última modificación: 04/11/2021
             */
-            define("HOST", "192.168.3.114");
-            define("USUARIO", "usuarioDAW214DBDepartamentos");
-            define("CONTRASENYA", "paso");
-            define("BASEDEDATOS", "DAW214DBDepartamentos");
+            include '../config/confDBPDO.php';
             //Establecimiento de la conexión 
-            $oConexionDB = new PDO('mysql:dbname='.BASEDEDATOS.';host='.HOST, USUARIO, CONTRASENYA);
+            $oConexionDB = new PDO(HOST, USER, PASSWORD);
 
             $attributes = array(
                 "AUTOCOMMIT", "ERRMODE", "CASE", "CLIENT_VERSION", "CONNECTION_STATUS",

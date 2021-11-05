@@ -11,12 +11,9 @@
             * @author Óscar Llamas Parra - oscar.llapar@educa.jcyl.es - https://github.com/OscarLlaPar
             * Última modificación: 04/11/2021
             */
-            define("HOST", "192.168.3.114");
-            define("USUARIO", "usuarioDAW214DBDepartamentos");
-            define("CONTRASENYA", "paso");
-            define("BASEDEDATOS", "DAW214DBDepartamentos");
+            include '../config/confDBMySQLi.php';
             //Establecimiento de la conexión 
-            $oConexionDB = mysqli_connect(HOST, USUARIO, CONTRASENYA, BASEDEDATOS);
+            $oConexionDB = mysqli_connect(HOST, USER, PASSWORD, DATABASE);
             //Muestra de la conexión por pantalla
             echo "<h3>Valores de la conexion:</h3>";
             echo "<pre>";

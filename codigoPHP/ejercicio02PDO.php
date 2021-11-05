@@ -7,7 +7,7 @@ and open the template in the editor.
 <html>
     <head>
         <meta charset="UTF-8">
-        <title></title>
+        <title>OLP-DWES - Ejercicio 2 (PDO)</title>
     </head>
     <body>
         <?php
@@ -21,10 +21,19 @@ and open the template in the editor.
             define("CONTRASENYA", "paso");
             define("BASEDEDATOS", "DAW214DBDepartamentos");
             //Establecimiento de la conexión 
-            $oConexionDB = new PDO('mysql:dbname='.BASEDEDATOS.';host='.HOST, USUARIO, CONTRASENYA);
+            $oConexionDB = new PDO(HOST, USER, PASSWORD);
 
             $resultadoConsulta=$oConexionDB->query('SELECT * FROM Departamento');
-            
+            $registroArray = $resultadoConsulta->fetch_object();
+            echo "<table>";
+            foreach ($registroArray as $clave => $valor) {
+                echo "<tr>";
+                    echo "<th>$clave</th>";
+                    echo "<td>$valor</td>";
+                echo "</tr>";
+                $registroArray = $resultadoConsulta->fetch_object();
+            }
+            echo "</table>";
              //Cerrar la conexión
              unset($oConexionDB);
         ?>
