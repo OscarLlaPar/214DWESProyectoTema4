@@ -11,40 +11,57 @@
             * @author Óscar Llamas Parra - oscar.llapar@educa.jcyl.es - https://github.com/OscarLlaPar
             * Última modificación: 04/11/2021
             */
+            //Incluir el archivo de configuración
             include '../config/confDBPDO.php';
-            //Establecimiento de la conexión 
-            $oConexionDB = new PDO(HOST, USER, PASSWORD);
-
-            $attributes = array(
-                "AUTOCOMMIT", "ERRMODE", "CASE", "CLIENT_VERSION", "CONNECTION_STATUS",
-                "ORACLE_NULLS", "PERSISTENT", "PREFETCH", "SERVER_INFO", "SERVER_VERSION",
-                "TIMEOUT"
-            );
-
-            foreach ($attributes as $val) {
-                echo "PDO::ATTR_$val: ";
-                echo $oConexionDB->getAttribute(constant("PDO::ATTR_$val")) . "\n";
-                echo "<br>";
+            echo "<h1>Conexión sin errores</h1>";
+            try{ //Dentro va el código susceptible de dar error
+                //Establecimiento de la conexión 
+                $miDB = new PDO(HOST, USER, PASSWORD);
+                //Listar los atributos que se van a mostrar
+                $aAtributos = [
+                    "AUTOCOMMIT", 
+                    "ERRMODE", 
+                    "CASE", 
+                    "CLIENT_VERSION", 
+                    "CONNECTION_STATUS",
+                    "ORACLE_NULLS", 
+                    "PERSISTENT", 
+                    "PREFETCH", 
+                    "SERVER_INFO", 
+                    "SERVER_VERSION",
+                    "TIMEOUT"
+                ];
+                //Mostrado de los atributos por pantalla
+                foreach ($aAtributos as $valor) {
+                    echo "PDO::ATTR_$valor: "; //El nombre de cada atributo
+                    echo $miDB->getAttribute(constant("PDO::ATTR_$valor")) . "\n"; //El valor de cada atributo
+                    echo "<br>";
+                }
             }
+            catch(PDOException $miExceptionPDO){ //Lo que se muestra en caso de error
+                echo "Error: ".$miExceptionPDO->getMessage(); //Mensaje de error
+                echo "<br>";
+                echo "Código de error: ".$miExceptionPDO->getCode(); //Código de error
+            }
+            finally{ //Ocurre tanto si da error como si no lo da
              //Cerrar la conexión
-             unset($oConexionDB);
+             unset($miDB);
+            }
              //------------Ahora mal-------
-             //Establecimiento de la conexión 
-            $oConexionDB = new PDO('mysql:dbname=nombreincorrecto;host=192.168.3.114', 'usuarioDAW214DBDepartamentos', 'paso');
-
-            $atributos = array(
-                "AUTOCOMMIT", "ERRMODE", "CASE", "CLIENT_VERSION", "CONNECTION_STATUS",
-                "ORACLE_NULLS", "PERSISTENT", "PREFETCH", "SERVER_INFO", "SERVER_VERSION",
-                "TIMEOUT"
-            );
-
-            foreach ($atributos as $valor) {
-                echo "PDO::ATTR_$valor: ";
-                echo $oConexionDB->getAttribute(constant("PDO::ATTR_$valor")) . "\n";
-                echo "<br>";
+             echo "<h1>Conexión con errores</h1>";
+            try{
+             //Establecimiento de la conexión (con el nombre incorrecto de la base de datos)
+            $miDB = new PDO('mysql:dbname=nombreincorrecto;host=192.168.3.114', 'usuarioDAW214DBDepartamentos', 'paso'); 
             }
+            catch(PDOException $miExceptionPDO){
+                echo "Error: ".$miExceptionPDO->getMessage();
+                echo "<br>";
+                echo "Código de error: ".$miExceptionPDO->getCode();
+            }
+            finally{
              //Cerrar la conexión
-             unset($oConexionDB);
+             unset($miDB);
+            }
         ?>
     </body>
 </html>
