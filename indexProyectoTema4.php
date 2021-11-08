@@ -41,7 +41,15 @@ and open the template in the editor.
                     <td><a href="mostrarcodigo/muestraEjercicio02PDO.php"><img src="webroot/img/iconoMostrar.png"></a></td>
                 </tr>
                 <tr>
-                    <td>Ejercicio 3 — Formulario para añadir un departamento a la tabla Departamento con validación de entrada y control de errores.</td>
+                    <td rowspan="2">Ejercicio 3 — Formulario para añadir un departamento a la tabla Departamento con validación de entrada y control de errores.</td>
+                    <th colspan="2">MySQLi</th>
+                    <th colspan="2">PDO</th>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td><a href="codigoPHP/ejercicio03PDO.php"><img src="webroot/img/iconoPlay.png"></a></td>
+                    <td><a href="mostrarcodigo/muestraEjercicio03PDO.php"><img src="webroot/img/iconoMostrar.png"></a></td>
                 </tr>
                 <tr>
                     <td>Ejercicio 4 — Formulario de búsqueda de departamentos por descripción (por una parte del campo

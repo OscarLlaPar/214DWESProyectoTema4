@@ -24,9 +24,9 @@ and open the template in the editor.
     <body>
         <?php
             /*
-            * Ejercicio 01
+            * Ejercicio 02
             * @author Óscar Llamas Parra - oscar.llapar@educa.jcyl.es - https://github.com/OscarLlaPar
-            * Última modificación: 04/11/2021
+            * Última modificación: 08/11/2021
             */
             //Incluir el archivo de configuración
             include '../config/confDBPDO.php';
