@@ -8,7 +8,7 @@ and open the template in the editor.
     <head>
         <meta charset="UTF-8">
         <title></title>
-        <style>
+    <style>
             body{
                 background-color:#100810;
                 color: white;
@@ -111,7 +111,7 @@ and open the template in the editor.
     <body>
         <?php
             /*
-            * Ejercicio 03
+            * Ejercicio 04
             * @author Óscar Llamas Parra - oscar.llapar@educa.jcyl.es - https://github.com/OscarLlaPar
             * Última modificación: 09/11/2021
             */
@@ -120,80 +120,23 @@ and open the template in the editor.
             include "../core/210322ValidacionFormularios.php";
             
             //Inicialización de variables
-            $entradaOK = true; //Inicialización de la variable que nos indica que todo va bien
-            $aErrores = [
-              'codigo' => null,
-              'descripcion' => null,
-              'volumenNegocio' => null
-            ];
-            $aRespuestas = [
-              'codigo' => null,
-              'descripcion' => null,
-              'volumenNegocio' => null
-            ];
+            $busqueda = null;
             // Si ya se ha pulsado el boton "Enviar"
             if(!empty($_REQUEST['enviar'])){
-                $aErrores['codigo']= validacionFormularios::comprobarAlfabetico($_REQUEST['codigo'],3,3,1);
-                if($aErrores['codigo'] == null){
-                    try{
-                        
-                        $miDB = new PDO(HOST, USER, PASSWORD);
-                        
-                        $miDB -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                        
-                        $consulta = ('SELECT * FROM Departamento');
-                        $resultadoConsulta = $miDB->prepare($consulta);
-                        
-                        $resultadoConsulta->execute();
-                        
-                        $registroConsulta = $resultadoConsulta->fetchObject();
-                        while($registroConsulta){ 
-                            if($registroConsulta->CodDepartamento == strtoupper($_REQUEST['codigo'])){ 
-                                $aErrores['codigo']= "Código duplicado."; 
-                            }
-                            $registroConsulta = $resultadoConsulta->fetchObject();  
-                        }
-                    }catch(PDOException $miExceptionPDO){
-                        echo "Error: ".$miExceptionPDO->getMessage();
-                         echo "<br>";
-                        echo "Código de error: ".$miExceptionPDO->getCode();
-                    }finally{
-                        unset($miDB);
-                    }
-                }
-                $aErrores['descripcion']= validacionFormularios::comprobarAlfanumerico($_REQUEST['descripcion'],50,3,1);
-                $aErrores['volumenNegocio']= validacionFormularios::comprobarFloat($_REQUEST['volumenNegocio'],PHP_FLOAT_MAX,0,1);
-                //acciones correspondientes en caso de que haya algún error
-                foreach($aErrores as $categoria => $error){
-                    //condición de que hay un error
-                    if(($error)!=null){
-                        //limpieza del campo para cuando vuelva a aparecer el formulario
-                        $_REQUEST[$categoria]="";
-                        $entradaOK=false;
-                    }
-                }
-            }
-            else{
-                $entradaOK=false;
-            }
-            if($entradaOK){
-                
-                $aRespuestas['codigo'] = $_REQUEST['codigo'];
-                $aRespuestas['descripcion'] = $_REQUEST['descripcion'];
-                $aRespuestas['volumenNegocio'] = $_REQUEST['volumenNegocio'];
-                
-                
                 try{
-                    
+                    $busqueda=$_REQUEST['busqueda'];
                     //Establecimiento de la conexión 
                     $miDB = new PDO(HOST, USER, PASSWORD);
-                    $consultaSQLDeActualizacion = "insert into DAW214DBDepartamentos.Departamento values ('".$aRespuestas['codigo']."', '".$aRespuestas['descripcion']."', null, ".$aRespuestas['volumenNegocio'].")";
-                    $consultaSQLDeSeleccion = "select * from DAW214DBDepartamentos.Departamento";
-                    $miDB->prepare($consultaSQLDeActualizacion);
-                    $numRegistros = $miDB->exec($consultaSQLDeActualizacion);
+                    
+                    if(!is_null($busqueda)){
+                        $consultaSQLDeSeleccion = "select * from DAW214DBDepartamentos.Departamento where DescDepartamento like '%".$busqueda."%'";
+                    }
+                    else{
+                        $consultaSQLDeSeleccion = "select * from DAW214DBDepartamentos.Departamento";
+                    }
+                    
                     $resultadoConsulta = $miDB->query($consultaSQLDeSeleccion);
                     
-
                     $registroObjeto = $resultadoConsulta->fetch(PDO::FETCH_OBJ);
 
                     echo "<table>";
@@ -222,7 +165,6 @@ and open the template in the editor.
                  //Cerrar la conexión
                  unset($miDB);
                 }
-               
             }
             else{
               ?>
@@ -231,36 +173,19 @@ and open the template in the editor.
             </header>    
             <main>
                     
-                    <form name="ejercicio03" action="ejercicio03PDO.php" method="post">
+                    <form name="ejercicio03" action="ejercicio04PDO.php" method="post">
                         <fieldset>
-                            <legend>Insertar nuevo departamento: </legend>
-                                    <label for="codigo">Código del departamento<span>*</span>:</label>
-                                    <input id="codigo" type="text" name="codigo" value="<?php echo (isset($_REQUEST['codigo']))?$_REQUEST['codigo']:"";?>" >
-                                
-                                    <?php
-                echo (!is_null($aErrores['codigo']))?"<span>$aErrores[codigo]</span>":"";
-        ?>              
-                                    <br>
-                                    <label for="descripcion">Descripción del departamento<span>*</span>:</label>
-                                    <input id="descripcion" type="text" name="descripcion" value="<?php echo (isset($_REQUEST['descripcion']))?$_REQUEST['descripcion']:"";?>" >
-                                
-                                    <?php
-                echo (!is_null($aErrores['descripcion']))?"<span>$aErrores[descripcion]</span>":"";
-        ?>            
-                                        <br>
-                                        <label for="volumenNegocio">Volumen de negocio (€)<span >*</span>:</label>
-                                        <input id="volumenNegocio" type="text" name="volumenNegocio" value="<?php echo (isset($_REQUEST['volumenNegocio']))?$_REQUEST['volumenNegocio']:"";?>" >  
-                                          
-        <?php
-                echo (!is_null($aErrores['volumenNegocio']))?"<span >$aErrores[volumenNegocio]</span>":"";
-        ?>
-                                        
+                            <legend>Buscar departamento: </legend>
+                                    <label for="busqueda">Buscar por descripción:</label>
+                                    <input id="busqueda" type="text" name="busqueda" value="<?php echo (isset($_REQUEST['busqueda']))?$_REQUEST['busqueda']:"";?>" >
+                                              
                         </fieldset>
                                         <input id="enviar" type="submit" value="Enviar" name="enviar"/>  
         <?php    
             }
             
         ?>
-        </main>
+                    </form>
+            </main>
     </body>
 </html>

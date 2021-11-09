@@ -17,6 +17,7 @@
             try{ //Dentro va el código susceptible de dar error
                 //Establecimiento de la conexión 
                 $miDB = new PDO(HOST, USER, PASSWORD);
+                $miDB->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 //Listar los atributos que se van a mostrar
                 $aAtributos = [
                     "AUTOCOMMIT", 
@@ -52,6 +53,7 @@
             try{
              //Establecimiento de la conexión (con el nombre incorrecto de la base de datos)
             $miDB = new PDO('mysql:dbname=nombreincorrecto;host=192.168.3.114', 'usuarioDAW214DBDepartamentos', 'paso'); 
+            $miDB->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             }
             catch(PDOException $miExceptionPDO){
                 echo "Error: ".$miExceptionPDO->getMessage();

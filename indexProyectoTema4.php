@@ -52,16 +52,32 @@ and open the template in the editor.
                     <td><a href="mostrarcodigo/muestraEjercicio03PDO.php"><img src="webroot/img/iconoMostrar.png"></a></td>
                 </tr>
                 <tr>
-                    <td>Ejercicio 4 — Formulario de búsqueda de departamentos por descripción (por una parte del campo
-                    DescDepartamento, si el usuario no pone nada deben aparecer todos los departamentos)</td>
+                    <td rowspan="2">Ejercicio 4 — Formulario de búsqueda de departamentos por descripción (por una parte del campo
+                        DescDepartamento, si el usuario no pone nada deben aparecer todos los departamentos)</td>
+                    <th colspan="2">MySQLi</th>
+                    <th colspan="2">PDO</th>
                 </tr>
                 <tr>
-                    <td>Ejercicio 5 — Pagina web que añade tres registros a nuestra tabla Departamento utilizando tres instrucciones
-                    insert y una transacción, de tal forma que se añadan los tres registros o no se añada ninguno</td>
+                    <td></td>
+                    <td></td>
+                    <td><a href="codigoPHP/ejercicio04PDO.php"><img src="webroot/img/iconoPlay.png"></a></td>
+                    <td><a href="mostrarcodigo/muestraEjercicio04PDO.php"><img src="webroot/img/iconoMostrar.png"></a></td>
+                </tr>
+                <tr>
+                    <td rowspan="2">Ejercicio 5 — Pagina web que añade tres registros a nuestra tabla Departamento utilizando tres instrucciones
+                        insert y una transacción, de tal forma que se añadan los tres registros o no se añada ninguno</td>
+                    <th colspan="2">MySQLi</th>
+                    <th colspan="2">PDO</th>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td><a href="codigoPHP/ejercicio05PDO.php"><img src="webroot/img/iconoPlay.png"></a></td>
+                    <td><a href="mostrarcodigo/muestraEjercicio05PDO.php"><img src="webroot/img/iconoMostrar.png"></a></td>
                 </tr>
                 <tr>
                     <td>Ejercicio 6 — Pagina web que cargue registros en la tabla Departamento desde un array departamentosnuevos
-utilizando una consulta preparada. (Después de programar y entender este ejercicio, modificar los
+                        utilizando una consulta preparada. (Después de programar y entender este ejercicio, modificar los
 ejercicios anteriores para que utilicen consultas preparadas). Probar consultas preparadas sin bind,
 pasando los parámetros en un array a execute</td>
                 </tr>
