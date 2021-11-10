@@ -7,7 +7,7 @@ and open the template in the editor.
 <html>
     <head>
         <meta charset="UTF-8">
-        <title></title>
+        <title>OLP-DWES - Ejercicio 3 (PDO)</title>
         <style>
             body{
                 background-color:#100810;
@@ -133,6 +133,7 @@ and open the template in the editor.
             ];
             // Si ya se ha pulsado el boton "Enviar"
             if(!empty($_REQUEST['enviar'])){
+                //-------------------------------------PENDIENTE------------Validacion especifica del codigo
                 $aErrores['codigo']= validacionFormularios::comprobarAlfabetico($_REQUEST['codigo'],3,3,1);
                 if($aErrores['codigo'] == null){
                     try{
@@ -184,7 +185,7 @@ and open the template in the editor.
                 
                 
                 try{
-                    
+                    //-------------------------------------PENDIENTE------------Consulta preparada
                     //Establecimiento de la conexión 
                     $miDB = new PDO(HOST, USER, PASSWORD);
                     $consultaSQLDeActualizacion = "insert into DAW214DBDepartamentos.Departamento values ('".$aRespuestas['codigo']."', '".$aRespuestas['descripcion']."', null, ".$aRespuestas['volumenNegocio'].")";

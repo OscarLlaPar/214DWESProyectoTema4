@@ -76,10 +76,18 @@ and open the template in the editor.
                     <td><a href="mostrarcodigo/muestraEjercicio05PDO.php"><img src="webroot/img/iconoMostrar.png"></a></td>
                 </tr>
                 <tr>
-                    <td>Ejercicio 6 — Pagina web que cargue registros en la tabla Departamento desde un array departamentosnuevos
+                    <td rowspan="2">Ejercicio 6 — Pagina web que cargue registros en la tabla Departamento desde un array departamentosnuevos
                         utilizando una consulta preparada. (Después de programar y entender este ejercicio, modificar los
-ejercicios anteriores para que utilicen consultas preparadas). Probar consultas preparadas sin bind,
-pasando los parámetros en un array a execute</td>
+                        ejercicios anteriores para que utilicen consultas preparadas). Probar consultas preparadas sin bind,
+                        pasando los parámetros en un array a execute</td>
+                    <th colspan="2">MySQLi</th>
+                    <th colspan="2">PDO</th>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td><a href="codigoPHP/ejercicio06PDO.php"><img src="webroot/img/iconoPlay.png"></a></td>
+                    <td><a href="mostrarcodigo/muestraEjercicio06PDO.php"><img src="webroot/img/iconoMostrar.png"></a></td>
                 </tr>
                 <tr>
                     <td>Ejercicio 7 — Página web que toma datos (código y descripción) de un fichero xml y los añade a la tabla

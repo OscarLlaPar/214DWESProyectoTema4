@@ -7,7 +7,7 @@ and open the template in the editor.
 <html>
     <head>
         <meta charset="UTF-8">
-        <title></title>
+        <title>OLP-DWES - Ejercicio 4 (PDO)</title>
     <style>
             body{
                 background-color:#100810;
@@ -118,11 +118,34 @@ and open the template in the editor.
             //Incluir el archivo de configuración
             include '../config/confDBPDO.php';
             include "../core/210322ValidacionFormularios.php";
-            
+            $entradaOK=true;
+            $aErrores = [
+                'busqueda' => null
+            ];
             //Inicialización de variables
-            $busqueda = null;
+            $aRespuestas = [
+                'busqueda' => null
+            ];
+            
+            
             // Si ya se ha pulsado el boton "Enviar"
             if(!empty($_REQUEST['enviar'])){
+                $aErrores['busqueda']=validacionFormularios::comprobarAlfanumerico($_REQUEST['descripcion'],50,3,0);
+                //acciones correspondientes en caso de que haya algún error
+                foreach($aErrores as $categoria => $error){
+                    //condición de que hay un error
+                    if(($error)!=null){
+                        //limpieza del campo para cuando vuelva a aparecer el formulario
+                        $_REQUEST[$categoria]="";
+                        $entradaOK=false;
+                    }
+                }
+                
+            }
+            else{
+                $entradaOK=false;
+            }
+            if($entradaOK){
                 try{
                     $busqueda=$_REQUEST['busqueda'];
                     //Establecimiento de la conexión 
@@ -178,6 +201,9 @@ and open the template in the editor.
                             <legend>Buscar departamento: </legend>
                                     <label for="busqueda">Buscar por descripción:</label>
                                     <input id="busqueda" type="text" name="busqueda" value="<?php echo (isset($_REQUEST['busqueda']))?$_REQUEST['busqueda']:"";?>" >
+        <?php
+                echo (!is_null($aErrores['busqueda']))?"<span>$aErrores[busqueda]</span>":"";
+        ?>           
                                               
                         </fieldset>
                                         <input id="enviar" type="submit" value="Enviar" name="enviar"/>  
