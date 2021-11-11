@@ -12,10 +12,10 @@ and open the template in the editor.
     </head>
     <body>
         <header>
-                <h1>Desarrollo Web en Entorno Servidor</h1>
-                <h2>Tema 4</h2>
-                <div class="cuadro" id="arriba"></div>
-            </header>
+            <h1>Desarrollo Web en Entorno Servidor</h1>
+            <h2>Tema 4</h2>
+            <div class="cuadro" id="arriba"></div>
+        </header>
         <main>
             <table>
                 <tr>
@@ -91,36 +91,44 @@ and open the template in the editor.
                 </tr>
                 <tr>
                     <td>Ejercicio 7 — Página web que toma datos (código y descripción) de un fichero xml y los añade a la tabla
-Departamento de nuestra base de datos. (IMPORTAR). El fichero importado se encuentra en el
-directorio .../tmp/ del servidor</td>
+                        Departamento de nuestra base de datos. (IMPORTAR). El fichero importado se encuentra en el
+                        directorio .../tmp/ del servidor</td>
                 </tr>
                 <tr>
-                    <td>Ejercicio 8 —  Página web que toma datos (código y descripción) de la tabla Departamento y guarda en un
-fichero departamento.xml. (COPIA DE SEGURIDAD / EXPORTAR). El fichero exportado se
-encuentra en el directorio .../tmp/ del servidor.
-Si el alumno dispone de tiempo probar distintos formatos de importación - exportación: XML,
-JSON, CSV, TXT,...
-Si el alumno dispone de tiempo probar a exportar e importar a o desde un directorio (a elegir) en
-el equipo cliente
-</td>
+                    <td rowspan="2">Ejercicio 8 —  Página web que toma datos (código y descripción) de la tabla Departamento y guarda en un
+                        fichero departamento.xml. (COPIA DE SEGURIDAD / EXPORTAR). El fichero exportado se
+                        encuentra en el directorio .../tmp/ del servidor.
+                        Si el alumno dispone de tiempo probar distintos formatos de importación - exportación: XML,
+                        JSON, CSV, TXT,...
+                        Si el alumno dispone de tiempo probar a exportar e importar a o desde un directorio (a elegir) en
+                        el equipo cliente.
+                    </td>
+                    <th colspan="2">MySQLi</th>
+                    <th colspan="2">PDO</th>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td><a href="codigoPHP/ejercicio08PDO.php"><img src="webroot/img/iconoPlay.png"></a></td>
+                    <td><a href="mostrarcodigo/muestraEjercicio08PDO.php"><img src="webroot/img/iconoMostrar.png"></a></td>
                 </tr>
                 <tr>
                     <td>Ejercicio 9 — Aplicación resumen MtoDeDepartamentosTema4. (Incluir PHPDoc y versionado en el repositorio
-GIT)
-</td>
+                        GIT)
+                    </td>
                 </tr>
                 <tr>
                     <td>Ejercicio 10 —  Aplicación resumen MtoDeDepartamentos POO y multicapa</td>
                 </tr>
             </table>
-            
-            <!--<table>
-            </table>-->
+
+<!--<table>
+</table>-->
         </main>
         <footer>
             <p>
                 Óscar Llamas Parra
-                            <a href="https://github.com/OscarLlaPar/" target="__blank"><img src="webroot/img/github.png" alt="Github"></img></a>
+                <a href="https://github.com/OscarLlaPar/" target="__blank"><img src="webroot/img/github.png" alt="Github"></img></a>
             </p>
             <p>
                 DAW 2

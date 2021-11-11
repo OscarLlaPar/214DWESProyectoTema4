@@ -9,9 +9,11 @@
             <file>file:/D:/DWES/ProyectoDAW/ProyectoTema4/config/confDBPDO.php</file>
             <file>file:/D:/DWES/ProyectoDAW/ProyectoTema4/scriptDB/CargaInicialDAW214DBDepartamentos.sql</file>
             <file>file:/D:/DWES/ProyectoDAW/ProyectoTema4/codigoPHP/ejercicio05PDO.php</file>
+            <file>file:/D:/DWES/ProyectoDAW/ProyectoTema4/core/210322ValidacionFormularios.php</file>
             <file>file:/D:/DWES/ProyectoDAW/ProyectoTema4/codigoPHP/ejercicio03PDO.php</file>
             <file>file:/D:/DWES/ProyectoDAW/ProyectoTema4/codigoPHP/ejercicio02PDO.php</file>
             <file>file:/D:/DWES/ProyectoDAW/ProyectoTema4/codigoPHP/ejercicio04PDO.php</file>
+            <file>file:/D:/DWES/ProyectoDAW/ProyectoTema4/codigoPHP/ejercicio06PDO.php</file>
             <file>file:/D:/DWES/ProyectoDAW/ProyectoTema4/codigoPHP/ejercicio01PDO.php</file>
             <file>file:/D:/DWES/ProyectoDAW/ProyectoTema4/webroot/css/estilos.css</file>
             <file>file:/D:/DWES/ProyectoDAW/ProyectoTema4/scriptDB/CreaDAW214DBDepartamentos.sql</file>
@@ -20,6 +22,7 @@
             <file>file:/D:/DWES/ProyectoDAW/ProyectoTema4/indexProyectoTema4.php</file>
             <file>file:/D:/DWES/ProyectoDAW/ProyectoTema4/mostrarcodigo/muestraEjercicio05PDO.php</file>
             <file>file:/D:/DWES/ProyectoDAW/ProyectoTema4/mostrarcodigo/muestraEjercicio01MySQLi.php</file>
+            <file>file:/D:/DWES/ProyectoDAW/ProyectoTema4/mostrarcodigo/muestraEjercicio06PDO.php</file>
             <file>file:/D:/DWES/ProyectoDAW/ProyectoTema4/codigoPHP/ejercicio02MySQLi.php</file>
             <file>file:/D:/DWES/ProyectoDAW/ProyectoTema4/config/confDBMySQLi.php</file>
         </group>
