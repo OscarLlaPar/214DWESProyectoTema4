@@ -42,7 +42,7 @@ and open the template in the editor.
                 $miDB->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 
                 $oConsulta = $miDB->prepare(<<<QUERY
-                            insert into DAW214DBDepartamentos.Departamento
+                            insert into DB214DWESProyectoTema4.Departamento
                             values (:codDep, :descDep, null, :volNeg)
                     QUERY);
                 
@@ -54,7 +54,7 @@ and open the template in the editor.
                 
                 $oConsulta->execute($aColumnas);
                 
-                $consultaSQLDeSeleccion = "select * from DAW214DBDepartamentos.Departamento";
+                $consultaSQLDeSeleccion = "select * from DB214DWESProyectoTema4.Departamento";
                 $resultadoConsulta = $miDB->prepare($consultaSQLDeSeleccion);
                 $resultadoConsulta->execute();
                 $registroObjeto = $resultadoConsulta->fetch(PDO::FETCH_OBJ);

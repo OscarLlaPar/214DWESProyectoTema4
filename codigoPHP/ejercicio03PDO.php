@@ -188,8 +188,8 @@ and open the template in the editor.
                     //-------------------------------------PENDIENTE------------Consulta preparada
                     //Establecimiento de la conexión 
                     $miDB = new PDO(HOST, USER, PASSWORD);
-                    $consultaSQLDeActualizacion = "insert into DAW214DBDepartamentos.Departamento values ('".$aRespuestas['codigo']."', '".$aRespuestas['descripcion']."', null, ".$aRespuestas['volumenNegocio'].")";
-                    $consultaSQLDeSeleccion = "select * from DAW214DBDepartamentos.Departamento";
+                    $consultaSQLDeActualizacion = "insert into DB214DWESProyectoTema4.Departamento values ('".$aRespuestas['codigo']."', '".$aRespuestas['descripcion']."', null, ".$aRespuestas['volumenNegocio'].")";
+                    $consultaSQLDeSeleccion = "select * from DB214DWESProyectoTema4.Departamento";
                     $miDB->prepare($consultaSQLDeActualizacion);
                     $numRegistros = $miDB->exec($consultaSQLDeActualizacion);
                     $resultadoConsulta = $miDB->query($consultaSQLDeSeleccion);

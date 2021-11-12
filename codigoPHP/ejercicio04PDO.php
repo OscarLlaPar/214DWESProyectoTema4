@@ -130,7 +130,7 @@ and open the template in the editor.
             
             // Si ya se ha pulsado el boton "Enviar"
             if(!empty($_REQUEST['enviar'])){
-                $aErrores['busqueda']=validacionFormularios::comprobarAlfanumerico($_REQUEST['descripcion'],50,3,0);
+                $aErrores['busqueda']=validacionFormularios::comprobarAlfanumerico($_REQUEST['busqueda'],50,3,0);
                 //acciones correspondientes en caso de que haya algún error
                 foreach($aErrores as $categoria => $error){
                     //condición de que hay un error
@@ -152,10 +152,10 @@ and open the template in the editor.
                     $miDB = new PDO(HOST, USER, PASSWORD);
                     
                     if(!is_null($busqueda)){
-                        $consultaSQLDeSeleccion = "select * from DAW214DBDepartamentos.Departamento where DescDepartamento like '%".$busqueda."%'";
+                        $consultaSQLDeSeleccion = "select * from DB214DWESProyectoTema4.Departamento where DescDepartamento like '%".$busqueda."%'";
                     }
                     else{
-                        $consultaSQLDeSeleccion = "select * from DAW214DBDepartamentos.Departamento";
+                        $consultaSQLDeSeleccion = "select * from DB214DWESProyectoTema4.Departamento";
                     }
                     
                     $resultadoConsulta = $miDB->query($consultaSQLDeSeleccion);

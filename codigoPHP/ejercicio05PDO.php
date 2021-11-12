@@ -25,9 +25,9 @@ and open the template in the editor.
                 //Quitar el modo autocommit
                 $miDB->beginTransaction(); 
                 //guardar consultas en variables heredoc
-                $resultadoConsulta1 = $miDB->exec("insert into DAW214DBDepartamentos.Departamento values ('BBB','Transaccion 1', null, a aa a a)");
-                $resultadoConsulta2 = $miDB->exec("insert into DAW214DBDepartamentos.Departamento values ('CCC','Transaccion 2', null, 77.66)");
-                $resultadoConsulta2 = $miDB->exec("insert into DAW214DBDepartamentos.Departamento values ('DDD','Transaccion 3', null, 2)");
+                $resultadoConsulta1 = $miDB->exec("insert into DB214DWESProyectoTema4.Departamento values ('BBB','Transaccion 1', null, 13)");
+                $resultadoConsulta2 = $miDB->exec("insert into DB214DWESProyectoTema4.Departamento values ('CCC','Transaccion 2', null, 77.66)");
+                $resultadoConsulta2 = $miDB->exec("insert into DB214DWESProyectoTema4.Departamento values ('DDD','Transaccion 3', null, 2)");
                 
                 if($miDB->commit()){
                     echo "<strong>Transaccion exitosa</strong>";
@@ -54,7 +54,6 @@ and open the template in the editor.
                 echo "<table>";
             }
             catch(PDOException $miExceptionPDO){ //Lo que se muestra en caso de error
-                $miDB->rollBack();
                 echo "Error: ".$miExceptionPDO->getMessage(); //Mensaje de error
                 echo "<br>";
                 echo "Código de error: ".$miExceptionPDO->getCode(); //Código de error

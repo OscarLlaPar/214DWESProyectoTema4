@@ -32,7 +32,7 @@ and open the template in the editor.
                 
                 foreach($datos as $fila){
                     $oConsulta = $miDB->prepare(<<<QUERY
-                            insert into DAW214DBDepartamentos.Departamento
+                            insert into DB214DWESProyectoTema4.Departamento
                             values (:codDep, :descDep, null, :volNeg)
                     QUERY);
                     

@@ -1,8 +1,8 @@
 <?php
     /*INSTITUTO*/
-    define("HOST","mysql:dbname=DAW214DBDepartamentos;host=192.168.3.114");
+    define("HOST","mysql:dbname=DB214DWESProyectoTema4;host=daw214.sauces.local");
     /*CASA*/
     //define("HOST","mysql:dbname=DAW214DBDepartamentos;host=192.168.0.120");
     define("PASSWORD", "paso");
-    define("USER", "usuarioDAW214DBDepartamentos");
+    define("USER", "User214DWESProyectoTema4");
     

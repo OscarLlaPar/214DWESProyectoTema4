@@ -1,4 +1,4 @@
-use DAW214DBDepartamentos;
+use DB214DWESProyectoTema4;
 
 insert into Departamento values
 ("UNO", "Primer departamento", null, 30.45),

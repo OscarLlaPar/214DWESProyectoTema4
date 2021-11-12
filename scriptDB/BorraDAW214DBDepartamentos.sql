@@ -1,3 +1,3 @@
-drop user 'usuarioDAW214DBDepartamentos'@'%';
+drop user 'User214DWESProyectoTema4'@'%';
 
-drop database if exists DAW214DBDepartamentos;
+drop database if exists DB214DWESProyectoTema4;

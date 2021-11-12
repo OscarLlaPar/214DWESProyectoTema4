@@ -35,7 +35,7 @@ and open the template in the editor.
                 
                 
                 //Establecimiento de la conexión 
-                $consultaSQLDeSeleccion = "select * from DAW214DBDepartamentos.Departamento";
+                $consultaSQLDeSeleccion = "select * from DB214DWESProyectoTema4.Departamento";
                 
                 $miDB = new PDO(HOST, USER, PASSWORD);
                 
@@ -94,7 +94,7 @@ and open the template in the editor.
                 //Establecimiento de la conexión 
                 $miDB = new PDO(HOST, USER, PASSWORD);
                 
-                $consultaSQLDeSeleccion = "select * from DAW214DBDepartamentos.Departamento";
+                $consultaSQLDeSeleccion = "select * from DB214DWESProyectoTema4.Departamento";
                 $resultadoConsulta = $miDB->prepare($consultaSQLDeSeleccion);
                 $resultadoConsulta->execute();
                 
