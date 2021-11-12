@@ -58,25 +58,25 @@ and open the template in the editor.
                 while($registroObjeto){
                     //Crear elemento "departamento"
                     $elementoDepartamento = $oDocumento->createElement('departamento');
-                    $nodoDepartamentos->appendChild($departamento);
+                    $nodoDepartamentos->appendChild($elementoDepartamento);
                     //informacion de los departamentos
-                    $elementoCodigo = $oDocumento->createElement('codDepartamento', $registroObjeto->codDepartamento);
+                    $elementoCodigo = $oDocumento->createElement('codDepartamento', $registroObjeto->CodDepartamento);
                     $elementoDepartamento->appendChild($elementoCodigo);
                     
-                    $elementoDescripcion = $oDocumento->createElement('descDepartamento', $registroObjeto->descDepartamento);
+                    $elementoDescripcion = $oDocumento->createElement('descDepartamento', $registroObjeto->DescDepartamento);
                     $elementoDepartamento->appendChild($elementoDescripcion);
                     
-                    $elementoFechaBaja = $oDocumento->createElement('fechaBaja', $registroObjeto->fechaBaja);
+                    $elementoFechaBaja = $oDocumento->createElement('fechaBaja', $registroObjeto->FechaBaja);
                     $elementoDepartamento->appendChild($elementoFechaBaja);
                     
-                    $elementoVolumenNegocio = $oDocumento->createElement('volumenNegocio', $registroObjeto->volumenNegocio);
+                    $elementoVolumenNegocio = $oDocumento->createElement('volumenNegocio', $registroObjeto->VolumenNegocio);
                     $elementoDepartamento->appendChild($elementoVolumenNegocio);
                     
                     $registroObjeto = $resultadoConsulta->fetchObject();
                 }
                 
                 
-                echo '<p>Escrito: ' . $oDocumento->save("../tmp/test.xml") . ' bytes</p>';
+                echo '<p>Escrito: ' . $oDocumento->save("../tmp/departamentos.xml") . ' bytes</p>';
             }
             catch(PDOException $miExceptionPDO){
                 echo "Error: ".$miExceptionPDO->getMessage();
