@@ -90,9 +90,17 @@ and open the template in the editor.
                     <td><a href="mostrarcodigo/muestraEjercicio06PDO.php"><img src="webroot/img/iconoMostrar.png"></a></td>
                 </tr>
                 <tr>
-                    <td>Ejercicio 7 — Página web que toma datos (código y descripción) de un fichero xml y los añade a la tabla
+                    <td rowspan="2">Ejercicio 7 — Página web que toma datos (código y descripción) de un fichero xml y los añade a la tabla
                         Departamento de nuestra base de datos. (IMPORTAR). El fichero importado se encuentra en el
                         directorio .../tmp/ del servidor</td>
+                    <th colspan="2">MySQLi</th>
+                    <th colspan="2">PDO</th>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td><a href="codigoPHP/ejercicio07PDO.php"><img src="webroot/img/iconoPlay.png"></a></td>
+                    <td><a href="mostrarcodigo/muestraEjercicio07PDO.php"><img src="webroot/img/iconoMostrar.png"></a></td>
                 </tr>
                 <tr>
                     <td rowspan="2">Ejercicio 8 —  Página web que toma datos (código y descripción) de la tabla Departamento y guarda en un
