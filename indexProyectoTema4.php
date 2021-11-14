@@ -3,18 +3,18 @@
 To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
--->
+-->ç
 <html>
     <head>
         <meta charset="UTF-8">
         <title>OLP — Desarrollo Web en Entorno Servidor — Tema 4</title>
         <link href="webroot/css/estilos.css" rel="stylesheet" type="text/css"/>
     </head>
-    <body>
+    <body>ç
         <header>
             <h1>Desarrollo Web en Entorno Servidor</h1>
             <h2>Tema 4</h2>
-            <div class="cuadro" id="arriba"></div>
+            <a href="../ProyectoDWES/indexProyectoDWES.php"><div class="cuadro" id="arriba">&#60;</div></a>
         </header>
         <main>
             <table>
@@ -135,7 +135,7 @@ and open the template in the editor.
         </main>
         <footer>
             <p>
-                Óscar Llamas Parra
+                Óscar Llamas Parra &nbsp;
                 <a href="https://github.com/OscarLlaPar/" target="__blank"><img src="webroot/img/github.png" alt="Github"></img></a>
             </p>
             <p>

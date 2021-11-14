@@ -2,9 +2,9 @@ create database if not exists DB214DWESProyectoTema4;
 
 
 
-SET GLOBAL validate_password.length = 2;
+/*SET GLOBAL validate_password.length = 2;
 SET GLOBAL validate_password.number_count = 0;
-SET GLOBAL validate_password.policy=LOW;
+SET GLOBAL validate_password.policy=LOW;*/
 
 create user 'User214DWESProyectoTema4'@'%' identified by 'paso';
 grant all privileges on DB214DWESProyectoTema4.* to 'User214DWESProyectoTema4'@'%';
