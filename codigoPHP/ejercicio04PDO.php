@@ -117,12 +117,15 @@ and open the template in the editor.
             */
             //Incluir el archivo de configuración
             include '../config/confDBPDO.php';
+            //Incluir las funciones de validación
             include "../core/210322ValidacionFormularios.php";
-            $entradaOK=true;
+            //Inicialización de variables
+            $entradaOK=true; //Inicialización de la variable que nos indica que todo va bien
+            //Inicialización del array que contiene los mensajes de error en caso de ser necesarios
             $aErrores = [
                 'busqueda' => null
             ];
-            //Inicialización de variables
+            //Inicialización del array que almacenará las respuestas cuando sean válidas
             $aRespuestas = [
                 'busqueda' => null
             ];
@@ -130,6 +133,7 @@ and open the template in the editor.
             
             // Si ya se ha pulsado el boton "Enviar"
             if(!empty($_REQUEST['enviar'])){
+                //Uso de las funciones de validación, que devuelven el mensaje de error cuando corresponde.
                 $aErrores['busqueda']=validacionFormularios::comprobarAlfanumerico($_REQUEST['busqueda'],50,3,0);
                 //acciones correspondientes en caso de que haya algún error
                 foreach($aErrores as $categoria => $error){
@@ -142,38 +146,49 @@ and open the template in the editor.
                 }
                 
             }
+            //Si no se ha pulsado el botón "Enviar" (es la primera vez)
             else{
                 $entradaOK=false;
             }
+            //Si todo está bien
             if($entradaOK){
+                //Tratamiento de los datos
                 try{
                     $busqueda=$_REQUEST['busqueda'];
                     //Establecimiento de la conexión 
                     $miDB = new PDO(HOST, USER, PASSWORD);
                     $miDB->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                    //Si se ha introduzido algo en el campo
                     if(!is_null($busqueda)){
                         $consultaSQLDeSeleccion = "select * from DB214DWESProyectoTema4.Departamento where DescDepartamento like '%".$busqueda."%'";
                     }
+                    //Si se ha dejado el cmapo vacío
                     else{
+                        //Mostrado de todas la filas
                         $consultaSQLDeSeleccion = "select * from DB214DWESProyectoTema4.Departamento";
                     }
-                    
-                    $resultadoConsulta = $miDB->query($consultaSQLDeSeleccion);
-                    
+                    //Preparación y ejecución de las consultas creadas en la condición
+                    $resultadoConsulta = $miDB->prepare($consultaSQLDeSeleccion);
+                    $resultadoConsulta->execute();
+                    //Carga del registro en una variable
                     $registroObjeto = $resultadoConsulta->fetch(PDO::FETCH_OBJ);
-
+                    //Creación de la tabla
                     echo "<table>";
+                    //Recorrido de todos los registros
                     while($registroObjeto!=null){
                         echo "<tr>";
+                        //Recorrido del registro
                         foreach ($registroObjeto as $clave => $valor) {
                             echo "<td>$valor</td>";
                         }
                         echo "</tr>";
+                        //Carga de una nueva fila
                         $registroObjeto = $resultadoConsulta->fetch(PDO::FETCH_OBJ);
                     }
                     echo "<table>";
 
                 }
+                //Gestión de errores relacionados con la base de datos
                 catch(PDOException $miExceptionPDO){
                     echo "Error: ".$miExceptionPDO->getMessage();
                     echo "<br>";
@@ -184,6 +199,7 @@ and open the template in the editor.
                  unset($miDB);
                 }
             }
+            //Si las respuestas no están bien (o es la primera vez)
             else{
               ?>
             <header>

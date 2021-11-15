@@ -31,28 +31,24 @@ and open the template in the editor.
             include '../config/confDBMySQLi.php';
             //Establecimiento de la conexión 
             $oConexionDB = mysqli_connect(HOST, USER, PASSWORD, DATABASE);
-            
+            //Creación y eecución de la consulta
             $resultadoConsulta=$oConexionDB->query('SELECT * FROM Departamento');
-            $registroArray = $resultadoConsulta->fetch_object();
+            //Carga anticipada de un registro (fila) en una variable
+            $registroObjeto = $resultadoConsulta->fetch_object();
+            //Creación de la tabla
             echo "<table>";
-            echo "<tr>";
-            foreach ($registroArray as $clave => $valor) {
-                    
-                        echo "<th>$clave</th>";
-                    
-                    
-                }
-                echo "</tr>";
-            while(!is_null($registroArray)){
+            while(!is_null($registroObjeto)){
                 echo "<tr>";
-                foreach ($registroArray as $clave => $valor) {
+                //Recorrido de un registro
+                foreach ($registroObjeto as $clave => $valor) {
                     
                         echo "<td>$valor</td>";
                     
                     
                 }
                 echo "</tr>";
-                $registroArray = $resultadoConsulta->fetch_object();
+                //Carga de nueva fila al final del bucle
+                $registroObjeto = $resultadoConsulta->fetch_object();
             }
             echo "</table>";
             $resultadoConsulta->free();

@@ -40,41 +40,42 @@ and open the template in the editor.
                 $miDB = new PDO(HOST, USER, PASSWORD);
                 
                 $miDB->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                
+                //Preparación de la consulta
                 $oConsulta = $miDB->prepare(<<<QUERY
                             insert into DB214DWESProyectoTema4.Departamento
                             values (:codDep, :descDep, null, :volNeg)
                     QUERY);
-                
+                //Asignación de los datos en la consulta preparada
                 $aColumnas = [
                         ':codDep' => $aRegistro['codDepartamento'],
                         ':descDep' => $aRegistro['descDepartamento'],
                         ':volNeg' => $aRegistro['volumenNegocio']
                     ];
-                
+                //Ejecución de la consulta
                 $oConsulta->execute($aColumnas);
-                
+                 //Preparación y ejecución de la consulta de selección
                 $consultaSQLDeSeleccion = "select * from DB214DWESProyectoTema4.Departamento";
                 $resultadoConsulta = $miDB->prepare($consultaSQLDeSeleccion);
                 $resultadoConsulta->execute();
+                //Carga del registro en una variable
                 $registroObjeto = $resultadoConsulta->fetch(PDO::FETCH_OBJ);
                 echo "<h1>Registro insertado</h1>";
+                //Creación de la tabla
                 echo "<table>";
-                echo "<tr>";
-                foreach ($registroObjeto as $clave => $valor) {
-                    echo "<th>$clave</th>";
-                }
-                echo "</tr>";
+                //Recorrido de todos los registros
                 while($registroObjeto!=null){
                     echo "<tr>";
+                    //Recorrido del registro
                     foreach ($registroObjeto as $clave => $valor) {
                         echo "<td>$valor</td>";
                     }
                     echo "</tr>";
+                    //Carga de una nueva fila
                     $registroObjeto = $resultadoConsulta->fetch(PDO::FETCH_OBJ);
                 }
                 echo "<table>";
             }
+            //Gestión de errores relacionados con la base de datos
             catch(PDOException $miExceptionPDO){ //Lo que se muestra en caso de error
                 echo "Error: ".$miExceptionPDO->getMessage(); //Mensaje de error
                 echo "<br>";

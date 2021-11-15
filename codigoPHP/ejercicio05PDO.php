@@ -18,6 +18,7 @@ and open the template in the editor.
             */
             //Incluir el archivo de configuración
             include '../config/confDBPDO.php';
+            //Array con arrays de los datos de los departamentos que se van a insertar
             $aDepartamentos = [
                 ['codDepartamento' => 'DDD',
                 'descDepartamento' => 'Departamento E51',
@@ -35,44 +36,50 @@ and open the template in the editor.
                 //Establecimiento de la conexión 
                 $miDB = new PDO(HOST, USER, PASSWORD);
                 $miDB->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                //Quitar el modo autocommit
+                //Quitar el modo autocommit/comenzar la transacción
                 $miDB->beginTransaction(); 
                 
-                
+                //Preparación de la consulta
                 $oConsulta = $miDB->prepare(<<<QUERY
                             insert into DB214DWESProyectoTema4.Departamento
                             values (:codDepartamento, :descDepartamento, null, :volumenNegocio)
                     QUERY);
-                
+                //Asignación de los datos en la consulta preparada mientras haya datos en el array de departamentos
                 foreach ($aDepartamentos as $aDepartamento) {
                     $aParametros = [
                         ':codDepartamento' => $aDepartamento['codDepartamento'],
                         ':descDepartamento' => $aDepartamento['descDepartamento'],
                         ':volumenNegocio' => $aDepartamento['volumenNegocio']
                     ];
-
+                    //Ejecución de la consulta tras cada asignación
                     $oConsulta->execute($aParametros);
                     
                 }
+                //Efectuar la transacción (Si algo va mal no se inserta nada)
                 if($miDB->commit()){
                     echo "<strong>Transaccion exitosa</strong>";
                 }
-                
-                $resultadoConsulta = $miDB->query("select * from DAW214DBDepartamentos.Departamento");
-                
+                //Preparación y ejecución de la consulta de selección
+                $resultadoConsulta = $miDB->prepare("select * from DAW214DBDepartamentos.Departamento");
+                $resultadoConsulta->execute();
+                //Carga del registro en una variable
                 $registroObjeto = $resultadoConsulta->fetch(PDO::FETCH_OBJ);
-                
+                //Creación de la tabla
                 echo "<table>";
+                //Recorrido de todos los registros
                 while($registroObjeto!=null){
                     echo "<tr>";
+                    //Recorrido del registro
                     foreach ($registroObjeto as $clave => $valor) {
                         echo "<td>$valor</td>";
                     }
                     echo "</tr>";
+                    //Carga de una nueva fila
                     $registroObjeto = $resultadoConsulta->fetch(PDO::FETCH_OBJ);
                 }
                 echo "<table>";
             }
+            //Gestión de errores relacionados con la base de datos
             catch(PDOException $miExceptionPDO){ //Lo que se muestra en caso de error
                 echo "Error: ".$miExceptionPDO->getMessage(); //Mensaje de error
                 echo "<br>";

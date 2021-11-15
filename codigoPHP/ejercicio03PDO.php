@@ -117,15 +117,18 @@ and open the template in the editor.
             */
             //Incluir el archivo de configuración
             include '../config/confDBPDO.php';
+            //Incluir las funciones de validación
             include "../core/210322ValidacionFormularios.php";
             
             //Inicialización de variables
             $entradaOK = true; //Inicialización de la variable que nos indica que todo va bien
+            //Inicialización del array que contiene los mensajes de error en caso de ser necesarios
             $aErrores = [
               'codigo' => null,
               'descripcion' => null,
               'volumenNegocio' => null
             ];
+            //Inicialización del array que almacenará las respuestas cuando sean válidas
             $aRespuestas = [
               'codigo' => null,
               'descripcion' => null,
@@ -133,27 +136,32 @@ and open the template in the editor.
             ];
             // Si ya se ha pulsado el boton "Enviar"
             if(!empty($_REQUEST['enviar'])){
-                //-------------------------------------PENDIENTE------------Validacion especifica del codigo
+                //Uso de las funciones de validación, que devuelven el mensaje de error cuando corresponde.
                 $aErrores['codigo']= validacionFormularios::comprobarAlfabetico($_REQUEST['codigo'],3,3,1);
+                //Validación de clave primaria (solo en caso de que la función la confirme como válida)
                 if($aErrores['codigo'] == null){
                     try{
-                        
+                        //Establecimiento de la conexión
                         $miDB = new PDO(HOST, USER, PASSWORD);
                         
                         $miDB -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                        
+                        //Elaboración y preparación de la consulta
                         $consulta = ('SELECT * FROM Departamento');
                         $resultadoConsulta = $miDB->prepare($consulta);
-                        
+                        //Ejecución de la consulta
                         $resultadoConsulta->execute();
-                        
+                        //Carga de una fila del resultado en una variable
                         $registroConsulta = $resultadoConsulta->fetchObject();
+                        //Recorrido de todos los registros (filas)
                         while($registroConsulta){ 
+                            //Si se detecta una clave que coincida con la respuesta, se crea un mensaje de error
                             if($registroConsulta->CodDepartamento == strtoupper($_REQUEST['codigo'])){ 
                                 $aErrores['codigo']= "Código duplicado."; 
                             }
+                            //Carga de nueva fila
                             $registroConsulta = $resultadoConsulta->fetchObject();  
                         }
+                    //Muestra de posibles errores    
                     }catch(PDOException $miExceptionPDO){
                         echo "Error: ".$miExceptionPDO->getMessage();
                          echo "<br>";
@@ -174,54 +182,62 @@ and open the template in the editor.
                     }
                 }
             }
+            //Si no se ha pulsado el botón "Enviar" (es la primera vez)
             else{
                 $entradaOK=false;
             }
+            //Si todo está bien
             if($entradaOK){
-                
+                //Tratamiento de los datos
+                //Almacenamiento de las respuestas válidas en el array de respuestas
                 $aRespuestas['codigo'] = $_REQUEST['codigo'];
                 $aRespuestas['descripcion'] = $_REQUEST['descripcion'];
                 $aRespuestas['volumenNegocio'] = $_REQUEST['volumenNegocio'];
                 
                 
                 try{
-                    //-------------------------------------PENDIENTE------------Consulta preparada
                     //Establecimiento de la conexión 
                     $miDB = new PDO(HOST, USER, PASSWORD);
                     
                     $miDB->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                    
+                    //Preparación de la consulta
                     $oConsulta = $miDB->prepare(<<<QUERY
                             insert into DB214DWESProyectoTema4.Departamento
                             values (:codDepartamento, :descDepartamento, null, :volumenNegocio)
                     QUERY);
-                    
+                    //Asignación de las respuestas en los parámetros de las consultas preparadas
                     $aColumnas = [
                         ':codDepartamento' => $aRespuestas['codigo'],
                         ':descDepartamento' => $aRespuestas['descripcion'],
                         ':volumenNegocio' => $aRespuestas['volumenNegocio']
                     ];
+                    //Ejecución de la consulta de actualización
                     $oConsulta->execute($aColumnas);
-                    
+                    //Creación de la consulta de selección
                     $consultaSQLDeSeleccion = "select * from DB214DWESProyectoTema4.Departamento";
-                    
-                    $resultadoConsulta = $miDB->query($consultaSQLDeSeleccion);
-                    
-
+                    //Preparación de la consulta de selección
+                    $resultadoConsulta = $miDB->prepare($consultaSQLDeSeleccion);
+                    //Ejecución de la consulta
+                    $resultadoConsulta->execute();
+                    //Carga del registro en una variable
                     $registroObjeto = $resultadoConsulta->fetch(PDO::FETCH_OBJ);
-
+                    //Creación de la tabla
                     echo "<table>";
+                    //Recorrido de todos los registros
                     while($registroObjeto!=null){
                         echo "<tr>";
+                        //Recorrido del registro
                         foreach ($registroObjeto as $clave => $valor) {
                             echo "<td>$valor</td>";
                         }
                         echo "</tr>";
+                        //Carga de una nueva fila
                         $registroObjeto = $resultadoConsulta->fetch(PDO::FETCH_OBJ);
                     }
                     echo "<table>";
 
                 }
+                //Gestión de errores relacionados con la base de datos
                 catch(PDOException $miExceptionPDO){
                     echo "Error: ".$miExceptionPDO->getMessage();
                     echo "<br>";
@@ -233,6 +249,7 @@ and open the template in the editor.
                 }
                
             }
+            //Si las respuestas no están bien (o es la primera vez)
             else{
               ?>
             <header>
