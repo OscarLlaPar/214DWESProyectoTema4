@@ -96,6 +96,7 @@ img{
 #arriba:hover{
     background-color: #9F1CC2;
     color: #00FFDD;
+    width: 100px;
 }
 #abajo{
     width: 50px;

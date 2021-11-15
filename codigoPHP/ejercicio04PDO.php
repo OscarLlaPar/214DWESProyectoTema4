@@ -150,7 +150,7 @@ and open the template in the editor.
                     $busqueda=$_REQUEST['busqueda'];
                     //Establecimiento de la conexión 
                     $miDB = new PDO(HOST, USER, PASSWORD);
-                    
+                    $miDB->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                     if(!is_null($busqueda)){
                         $consultaSQLDeSeleccion = "select * from DB214DWESProyectoTema4.Departamento where DescDepartamento like '%".$busqueda."%'";
                     }
@@ -163,11 +163,6 @@ and open the template in the editor.
                     $registroObjeto = $resultadoConsulta->fetch(PDO::FETCH_OBJ);
 
                     echo "<table>";
-                    echo "<tr>";
-                    foreach ($registroObjeto as $clave => $valor) {
-                        echo "<th>$clave</th>";
-                    }
-                    echo "</tr>";
                     while($registroObjeto!=null){
                         echo "<tr>";
                         foreach ($registroObjeto as $clave => $valor) {

@@ -52,8 +52,8 @@
              echo "<h1>Conexión con errores</h1>";
             try{
              //Establecimiento de la conexión (con el nombre incorrecto de la base de datos)
-            $miDB = new PDO('mysql:dbname=nombreincorrecto;host=192.168.3.114', 'usuarioDAW214DBDepartamentos', 'paso'); 
-            $miDB->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $miDB2 = new PDO(HOST, USER, "passincorrecta"); 
+            $miDB2->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             }
             catch(PDOException $miExceptionPDO){
                 echo "Error: ".$miExceptionPDO->getMessage();
@@ -62,7 +62,7 @@
             }
             finally{
              //Cerrar la conexión
-             unset($miDB);
+             unset($miDB2);
             }
         ?>
     </body>

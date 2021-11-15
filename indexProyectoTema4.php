@@ -3,14 +3,14 @@
 To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
--->ç
+-->
 <html>
     <head>
         <meta charset="UTF-8">
         <title>OLP — Desarrollo Web en Entorno Servidor — Tema 4</title>
         <link href="webroot/css/estilos.css" rel="stylesheet" type="text/css"/>
     </head>
-    <body>ç
+    <body>
         <header>
             <h1>Desarrollo Web en Entorno Servidor</h1>
             <h2>Tema 4</h2>
@@ -90,20 +90,30 @@ and open the template in the editor.
                     <td><a href="mostrarcodigo/muestraEjercicio06PDO.php"><img src="webroot/img/iconoMostrar.png"></a></td>
                 </tr>
                 <tr>
-                    <td rowspan="2">Ejercicio 7 — Página web que toma datos (código y descripción) de un fichero xml y los añade a la tabla
+                    <td rowspan="3">Ejercicio 7 — Página web que toma datos (código y descripción) de un fichero xml y los añade a la tabla
                         Departamento de nuestra base de datos. (IMPORTAR). El fichero importado se encuentra en el
                         directorio .../tmp/ del servidor</td>
-                    <th colspan="2">MySQLi</th>
-                    <th colspan="2">PDO</th>
+                    <th colspan="4">MySQLi</th>
+                    <th colspan="4">PDO</th>
+                </tr>
+                <tr>
+                    <th colspan="2">XML</th>
+                    <th colspan="2">JSON</th>
+                    <th colspan="2">XML</th>
+                    <th colspan="2">JSON</th>
                 </tr>
                 <tr>
                     <td></td>
                     <td></td>
-                    <td><a href="codigoPHP/ejercicio07PDO.php"><img src="webroot/img/iconoPlay.png"></a></td>
-                    <td><a href="mostrarcodigo/muestraEjercicio07PDO.php"><img src="webroot/img/iconoMostrar.png"></a></td>
+                    <td></td>
+                    <td></td>
+                    <td><a href="codigoPHP/ejercicio07PDOXML.php"><img src="webroot/img/iconoPlay.png"></a></td>
+                    <td><a href="mostrarcodigo/muestraEjercicio07PDOXML.php"><img src="webroot/img/iconoMostrar.png"></a></td>
+                    <td><a href="codigoPHP/ejercicio07PDOJSON.php"><img src="webroot/img/iconoPlay.png"></a></td>
+                    <td><a href="mostrarcodigo/muestraEjercicio07PDOJSON.php"><img src="webroot/img/iconoMostrar.png"></a></td>
                 </tr>
                 <tr>
-                    <td rowspan="2">Ejercicio 8 —  Página web que toma datos (código y descripción) de la tabla Departamento y guarda en un
+                    <td rowspan="3">Ejercicio 8 —  Página web que toma datos (código y descripción) de la tabla Departamento y guarda en un
                         fichero departamento.xml. (COPIA DE SEGURIDAD / EXPORTAR). El fichero exportado se
                         encuentra en el directorio .../tmp/ del servidor.
                         Si el alumno dispone de tiempo probar distintos formatos de importación - exportación: XML,
@@ -111,14 +121,25 @@ and open the template in the editor.
                         Si el alumno dispone de tiempo probar a exportar e importar a o desde un directorio (a elegir) en
                         el equipo cliente.
                     </td>
-                    <th colspan="2">MySQLi</th>
-                    <th colspan="2">PDO</th>
+                    <th colspan="4">MySQLi</th>
+                    <th colspan="4">PDO</th>
                 </tr>
                 <tr>
+                    <th colspan="2">XML</th>
+                    <th colspan="2">JSON</th>
+                    <th colspan="2">XML</th>
+                    <th colspan="2">JSON</th>
+                </tr>
+                <tr>
+                    
                     <td></td>
                     <td></td>
-                    <td><a href="codigoPHP/ejercicio08PDO.php"><img src="webroot/img/iconoPlay.png"></a></td>
-                    <td><a href="mostrarcodigo/muestraEjercicio08PDO.php"><img src="webroot/img/iconoMostrar.png"></a></td>
+                    <td></td>
+                    <td></td>
+                    <td><a href="codigoPHP/ejercicio08PDOXML.php"><img src="webroot/img/iconoPlay.png"></a></td>
+                    <td><a href="mostrarcodigo/muestraEjercicio08PDOXML.php"><img src="webroot/img/iconoMostrar.png"></a></td>
+                    <td><a href="codigoPHP/ejercicio08PDOJSON.php"><img src="webroot/img/iconoPlay.png"></a></td>
+                    <td><a href="mostrarcodigo/muestraEjercicio08PDOJSON.php"><img src="webroot/img/iconoMostrar.png"></a></td>
                 </tr>
                 <tr>
                     <td>Ejercicio 9 — Aplicación resumen MtoDeDepartamentosTema4. (Incluir PHPDoc y versionado en el repositorio

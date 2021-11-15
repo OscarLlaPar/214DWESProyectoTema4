@@ -18,17 +18,42 @@ and open the template in the editor.
             */
             //Incluir el archivo de configuración
             include '../config/confDBPDO.php';
+            $aDepartamentos = [
+                ['codDepartamento' => 'DDD',
+                'descDepartamento' => 'Departamento E51',
+                'volumenNegocio' => '37'],
+                
+                ['codDepartamento' => 'EEE',
+                'descDepartamento' => 'Departamento E52',
+                'volumenNegocio' => '91.1'],
+                
+                ['codDepartamento' => 'FFF',
+                'descDepartamento' => 'Departamento E53',
+                'volumenNegocio' => '11.11'],
+            ];
             try{ //Dentro va el código susceptible de dar error
                 //Establecimiento de la conexión 
                 $miDB = new PDO(HOST, USER, PASSWORD);
                 $miDB->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 //Quitar el modo autocommit
                 $miDB->beginTransaction(); 
-                //guardar consultas en variables heredoc
-                $resultadoConsulta1 = $miDB->exec("insert into DB214DWESProyectoTema4.Departamento values ('BBB','Transaccion 1', null, 13)");
-                $resultadoConsulta2 = $miDB->exec("insert into DB214DWESProyectoTema4.Departamento values ('CCC','Transaccion 2', null, 77.66)");
-                $resultadoConsulta2 = $miDB->exec("insert into DB214DWESProyectoTema4.Departamento values ('DDD','Transaccion 3', null, 2)");
                 
+                
+                $oConsulta = $miDB->prepare(<<<QUERY
+                            insert into DB214DWESProyectoTema4.Departamento
+                            values (:codDepartamento, :descDepartamento, null, :volumenNegocio)
+                    QUERY);
+                
+                foreach ($aDepartamentos as $aDepartamento) {
+                    $aParametros = [
+                        ':codDepartamento' => $aDepartamento['codDepartamento'],
+                        ':descDepartamento' => $aDepartamento['descDepartamento'],
+                        ':volumenNegocio' => $aDepartamento['volumenNegocio']
+                    ];
+
+                    $oConsulta->execute($aParametros);
+                    
+                }
                 if($miDB->commit()){
                     echo "<strong>Transaccion exitosa</strong>";
                 }
@@ -38,11 +63,6 @@ and open the template in the editor.
                 $registroObjeto = $resultadoConsulta->fetch(PDO::FETCH_OBJ);
                 
                 echo "<table>";
-                echo "<tr>";
-                foreach ($registroObjeto as $clave => $valor) {
-                    echo "<th>$clave</th>";
-                }
-                echo "</tr>";
                 while($registroObjeto!=null){
                     echo "<tr>";
                     foreach ($registroObjeto as $clave => $valor) {

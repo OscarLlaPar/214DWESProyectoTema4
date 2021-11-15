@@ -23,22 +23,23 @@
             $error=$oConexionDB->connect_errno;
             echo "<h3>Errores:</h3>";
             echo $error;
-            //----------Ahora mal------------------ 
             //Cerrar la conexión
             $oConexionDB->close();
-            $oConexionDB = mysqli_connect('192.168.3.114', 'usuarioDAW214DBDepartamentos', 'paso','nombreincorrecto');
+            //----------Ahora mal------------------ 
+            
+            $oConexionDB2 = mysqli_connect(HOST, USER, "passincorrecta", DATABASE);
             //Muestra de la conexión por pantalla
             echo "<h3>Valores de la conexion:</h3>";
             echo "<pre>";
-            print_r($oConexionDB);
+            print_r($oConexionDB2);
             echo "</pre>";
             //Valor que cuenta los posibles errores
-            $error=$oConexionDB->connect_errno;
+            $error=$oConexionDB2->connect_errno;
             echo "<h3>Errores:</h3>";
             echo $error;
              
             //Cerrar la conexión
-            $oConexionDB->close();
+            $oConexionDB2->close();
         ?>
     </body>
 </html>

@@ -14,7 +14,7 @@ and open the template in the editor.
             /*
             * Ejercicio 07
             * @author Óscar Llamas Parra - oscar.llapar@educa.jcyl.es - https://github.com/OscarLlaPar
-            * Última modificación: 12/11/2021
+            * Última modificación: 15/11/2021
             */
             //Incluir el archivo de configuración
             include '../config/confDBPDO.php';
@@ -25,7 +25,7 @@ and open the template in the editor.
                 $miDB = new PDO(HOST, USER, PASSWORD);
                 
                 
-                $json= file_get_contents('../tmp/test.json');
+                $json= file_get_contents('../tmp/departamentos.json');
                 $datos= json_decode($json, true);
                 
                 

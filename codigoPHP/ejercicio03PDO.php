@@ -188,21 +188,29 @@ and open the template in the editor.
                     //-------------------------------------PENDIENTE------------Consulta preparada
                     //Establecimiento de la conexión 
                     $miDB = new PDO(HOST, USER, PASSWORD);
-                    $consultaSQLDeActualizacion = "insert into DB214DWESProyectoTema4.Departamento values ('".$aRespuestas['codigo']."', '".$aRespuestas['descripcion']."', null, ".$aRespuestas['volumenNegocio'].")";
+                    
+                    $miDB->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                    
+                    $oConsulta = $miDB->prepare(<<<QUERY
+                            insert into DB214DWESProyectoTema4.Departamento
+                            values (:codDepartamento, :descDepartamento, null, :volumenNegocio)
+                    QUERY);
+                    
+                    $aColumnas = [
+                        ':codDepartamento' => $aRespuestas['codigo'],
+                        ':descDepartamento' => $aRespuestas['descripcion'],
+                        ':volumenNegocio' => $aRespuestas['volumenNegocio']
+                    ];
+                    $oConsulta->execute($aColumnas);
+                    
                     $consultaSQLDeSeleccion = "select * from DB214DWESProyectoTema4.Departamento";
-                    $miDB->prepare($consultaSQLDeActualizacion);
-                    $numRegistros = $miDB->exec($consultaSQLDeActualizacion);
+                    
                     $resultadoConsulta = $miDB->query($consultaSQLDeSeleccion);
                     
 
                     $registroObjeto = $resultadoConsulta->fetch(PDO::FETCH_OBJ);
 
                     echo "<table>";
-                    echo "<tr>";
-                    foreach ($registroObjeto as $clave => $valor) {
-                        echo "<th>$clave</th>";
-                    }
-                    echo "</tr>";
                     while($registroObjeto!=null){
                         echo "<tr>";
                         foreach ($registroObjeto as $clave => $valor) {

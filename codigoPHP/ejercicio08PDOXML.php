@@ -26,7 +26,7 @@ and open the template in the editor.
             /*
             * Ejercicio 08
             * @author Óscar Llamas Parra - oscar.llapar@educa.jcyl.es - https://github.com/OscarLlaPar
-            * Última modificación: 12/11/2021
+            * Última modificación: 15/11/2021
             */
             //Incluir el archivo de configuración
             include '../config/confDBPDO.php';
@@ -87,37 +87,7 @@ and open the template in the editor.
              //Cerrar la conexión
              unset($miDB);
             }
-            //--------------------------------------JSON-------------------------------------
-            /*try{
-                
-                
-                //Establecimiento de la conexión 
-                $miDB = new PDO(HOST, USER, PASSWORD);
-                
-                $consultaSQLDeSeleccion = "select * from DB214DWESProyectoTema4.Departamento";
-                $resultadoConsulta = $miDB->prepare($consultaSQLDeSeleccion);
-                $resultadoConsulta->execute();
-                
-                
-                
-                $registroObjeto = $resultadoConsulta->fetch(PDO::FETCH_OBJ);
-                while($registroObjeto!=null){
-                    $json = json_encode($registroObjeto);
-                    $bytes = file_put_contents("../tmp/test.json", $json); 
-                    $registroObjeto = $resultadoConsulta->fetch(PDO::FETCH_OBJ);
-                }
-                
-                
-            }
-            catch(PDOException $miExceptionPDO){
-                echo "Error: ".$miExceptionPDO->getMessage();
-                echo "<br>";
-                echo "Código de error: ".$miExceptionPDO->getCode();
-            }
-            finally{
-             //Cerrar la conexión
-             unset($miDB);
-            }*/
+            
         ?>
     </body>
 </html>
