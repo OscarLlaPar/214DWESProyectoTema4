@@ -14,9 +14,11 @@ and open the template in the editor.
         <header>
             <h1>Desarrollo Web en Entorno Servidor</h1>
             <h2>Tema 4</h2>
+            
             <a href="../ProyectoDWES/indexProyectoDWES.php"><div class="cuadro" id="arriba">&#60;</div></a>
         </header>
         <main>
+            <a href="mostrarcodigo/muestraSQL.php" class="linkBD">Scripts y configuración de la base de datos</a>
             <table>
                 <tr>
                     <td rowspan="2">Ejercicio 1 — Conexión a la base de datos con la cuenta usuario y tratamiento de errores</td>

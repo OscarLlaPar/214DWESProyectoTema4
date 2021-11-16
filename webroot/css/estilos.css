@@ -19,7 +19,7 @@ header{
     margin: 0;
     padding: 0;
     width: 100%;
-    height: 15vh;
+    height: 10vh;
     border-bottom: solid #00FFDD 1px;
     padding: 15px 0 15px 0;
 }
@@ -66,7 +66,7 @@ footer{
     top: 80%;
     bottom: 0;
     width: 100%;
-    height: 15vh;
+    height: 10vh;
     text-align: left;
     border-top: solid #00FFDD 1px;
     position: relative;
@@ -78,8 +78,12 @@ footer p{
 img{
     height: 25px;
     width: 25px;
+    transition: all 0.4s;
 }
-
+img:hover{
+    /*filter:invert(50%);*/
+    filter: invert(0.4) sepia(1) hue-rotate(-170deg) saturate(500%);
+}
 .cuadro{
     background-color: #00FFDD;
     position: absolute;
@@ -91,7 +95,7 @@ img{
     height: 100%;
     top: 0;
     left: 0px;
-    padding-top: 5vh;
+    padding-top: 3vh;
 }
 #arriba:hover{
     background-color: #9F1CC2;
@@ -103,4 +107,12 @@ img{
     height: 100%;
     right: 0px;
     bottom: 0%;
+}
+.linkBD{
+    color: white;
+    font-size: 12px;
+    transition: all 0.4s;
+}
+.linkBD:hover{
+    color: #00FFDD;
 }
