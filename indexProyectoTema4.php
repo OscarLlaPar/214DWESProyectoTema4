@@ -147,6 +147,7 @@ and open the template in the editor.
                     <td>Ejercicio 9 — Aplicación resumen MtoDeDepartamentosTema4. (Incluir PHPDoc y versionado en el repositorio
                         GIT)
                     </td>
+                    <td colspan="8"><a href="../ProyectoMtoDepartamentosTema4/index.php"><img src="webroot/img/iconoPlay.png"></a></td>
                 </tr>
                 <tr>
                     <td>Ejercicio 10 —  Aplicación resumen MtoDeDepartamentos POO y multicapa</td>
