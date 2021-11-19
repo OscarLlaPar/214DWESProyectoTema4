@@ -158,15 +158,7 @@ and open the template in the editor.
                     //Establecimiento de la conexión 
                     $miDB = new PDO(HOST, USER, PASSWORD);
                     $miDB->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                    //Si se ha introduzido algo en el campo
-                    if(!is_null($busqueda)){
-                        $consultaSQLDeSeleccion = "select * from DB214DWESProyectoTema4.Departamento where DescDepartamento like '%".$busqueda."%'";
-                    }
-                    //Si se ha dejado el cmapo vacío
-                    else{
-                        //Mostrado de todas la filas
-                        $consultaSQLDeSeleccion = "select * from DB214DWESProyectoTema4.Departamento";
-                    }
+                    $consultaSQLDeSeleccion = "select * from DB214DWESProyectoTema4.Departamento where DescDepartamento like '%".$busqueda."%'";
                     //Preparación y ejecución de las consultas creadas en la condición
                     $resultadoConsulta = $miDB->prepare($consultaSQLDeSeleccion);
                     $resultadoConsulta->execute();
