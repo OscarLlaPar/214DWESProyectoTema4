@@ -18,7 +18,11 @@ and open the template in the editor.
             <a href="../ProyectoDWES/indexProyectoDWES.php"><div class="cuadro" id="arriba">&#60;</div></a>
         </header>
         <main>
-            <a href="mostrarcodigo/muestraSQL.php" class="linkBD">Scripts y configuración de la base de datos</a>
+            <p>Scripts y configuración de la base de datos</p>
+            <p><a href="scriptDB/CreaDB214DWESProyectoTema4Explotacion.php">Crear</a></p>
+            <p><a href="scriptDB/CargaInicialDB214DWESProyectoTema4Explotacion.php">Carga inicial</a></p>
+            <p><a href="scriptDB/BorraDB214DWESProyectoTema4Explotacion.php">Borrar</a></p>
+            <p><a href="mostrarcodigo/muestraSQL.php" class="linkBD">Mostrar</a></p>
             <table>
                 <tr>
                     <td rowspan="2">Ejercicio 1 — Conexión a la base de datos con la cuenta usuario y tratamiento de errores</td>

@@ -36,7 +36,7 @@ and open the template in the editor.
                 $miDB = new PDO(HOST, USER, PASSWORD);
                 $miDB->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 //Creación de la consulta
-                $consultaSQLDeSeleccion = "select * from DB214DWESProyectoTema4.Departamento";
+                $consultaSQLDeSeleccion = "select * from Departamento";
                 $resultadoConsulta = $miDB->prepare($consultaSQLDeSeleccion);
                 $resultadoConsulta->execute();
                 //Carga de una fila (de manera anticipada) sobre la variable "registroObjeto"

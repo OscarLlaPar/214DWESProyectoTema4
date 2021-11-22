@@ -41,7 +41,7 @@ and open the template in the editor.
                 
                 //Preparación de la consulta
                 $oConsulta = $miDB->prepare(<<<QUERY
-                            insert into DB214DWESProyectoTema4.Departamento
+                            insert into Departamento
                             values (:codDepartamento, :descDepartamento, null, :volumenNegocio)
                     QUERY);
                 //Asignación de los datos en la consulta preparada mientras haya datos en el array de departamentos
@@ -60,7 +60,7 @@ and open the template in the editor.
                     echo "<strong>Transaccion exitosa</strong>";
                 }
                 //Preparación y ejecución de la consulta de selección
-                $resultadoConsulta = $miDB->prepare("select * from DAW214DBDepartamentos.Departamento");
+                $resultadoConsulta = $miDB->prepare("select * from Departamento");
                 $resultadoConsulta->execute();
                 //Carga del registro en una variable
                 $registroObjeto = $resultadoConsulta->fetch(PDO::FETCH_OBJ);

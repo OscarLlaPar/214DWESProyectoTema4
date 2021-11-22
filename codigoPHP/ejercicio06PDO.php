@@ -41,8 +41,8 @@ and open the template in the editor.
                 
                 $miDB->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 //Preparación de la consulta
-                $oConsulta = $miDB->prepare(<<<QUERY
-                            insert into DB214DWESProyectoTema4.Departamento
+                $consulta = $miDB->prepare(<<<QUERY
+                            insert into Departamento
                             values (:codDep, :descDep, null, :volNeg)
                     QUERY);
                 //Asignación de los datos en la consulta preparada
@@ -52,9 +52,9 @@ and open the template in the editor.
                         ':volNeg' => $aRegistro['volumenNegocio']
                     ];
                 //Ejecución de la consulta
-                $oConsulta->execute($aColumnas);
+                $consulta->execute($aColumnas);
                  //Preparación y ejecución de la consulta de selección
-                $consultaSQLDeSeleccion = "select * from DB214DWESProyectoTema4.Departamento";
+                $consultaSQLDeSeleccion = "select * from Departamento";
                 $resultadoConsulta = $miDB->prepare($consultaSQLDeSeleccion);
                 $resultadoConsulta->execute();
                 //Carga del registro en una variable
@@ -73,7 +73,7 @@ and open the template in the editor.
                     //Carga de una nueva fila
                     $registroObjeto = $resultadoConsulta->fetch(PDO::FETCH_OBJ);
                 }
-                echo "<table>";
+                echo "</table>";
             }
             //Gestión de errores relacionados con la base de datos
             catch(PDOException $miExceptionPDO){ //Lo que se muestra en caso de error

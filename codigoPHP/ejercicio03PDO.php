@@ -146,20 +146,14 @@ and open the template in the editor.
                         
                         $miDB -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                         //Elaboración y preparación de la consulta
-                        $consulta = ('SELECT * FROM Departamento');
+                        $consulta = 'SELECT * FROM Departamento WHERE CodDepartamento = '.$_REQUEST['codigo']."'";
                         $resultadoConsulta = $miDB->prepare($consulta);
                         //Ejecución de la consulta
                         $resultadoConsulta->execute();
                         //Carga de una fila del resultado en una variable
                         $registroConsulta = $resultadoConsulta->fetchObject();
-                        //Recorrido de todos los registros (filas)
-                        while($registroConsulta){ 
-                            //Si se detecta una clave que coincida con la respuesta, se crea un mensaje de error
-                            if($registroConsulta->CodDepartamento == strtoupper($_REQUEST['codigo'])){ 
-                                $aErrores['codigo']= "Código duplicado."; 
-                            }
-                            //Carga de nueva fila
-                            $registroConsulta = $resultadoConsulta->fetchObject();  
+                        if(!is_null($registroConsulta)){ 
+                            $aErrores['codigo']= "Código duplicado."; 
                         }
                     //Muestra de posibles errores    
                     }catch(PDOException $miExceptionPDO){
@@ -202,7 +196,7 @@ and open the template in the editor.
                     $miDB->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                     //Preparación de la consulta
                     $oConsulta = $miDB->prepare(<<<QUERY
-                            insert into DB214DWESProyectoTema4.Departamento
+                            insert into Departamento
                             values (:codDepartamento, :descDepartamento, null, :volumenNegocio)
                     QUERY);
                     //Asignación de las respuestas en los parámetros de las consultas preparadas
@@ -214,7 +208,7 @@ and open the template in the editor.
                     //Ejecución de la consulta de actualización
                     $oConsulta->execute($aColumnas);
                     //Creación de la consulta de selección
-                    $consultaSQLDeSeleccion = "select * from DB214DWESProyectoTema4.Departamento";
+                    $consultaSQLDeSeleccion = "select * from Departamento";
                     //Preparación de la consulta de selección
                     $resultadoConsulta = $miDB->prepare($consultaSQLDeSeleccion);
                     //Ejecución de la consulta

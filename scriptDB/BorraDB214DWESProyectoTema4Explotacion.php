@@ -7,7 +7,7 @@ try{ //Dentro va el código susceptible de dar error
                 $consulta = $miDB->prepare(<<<QUERY
                         drop table if exists Departamento
                     QUERY);
-                $miDB->execute();
+                $consulta->execute();
             }
             catch(PDOException $miExceptionPDO){ //Lo que se muestra en caso de error
                 echo "Error: ".$miExceptionPDO->getMessage(); //Mensaje de error

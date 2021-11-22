@@ -35,7 +35,7 @@ and open the template in the editor.
                 
                 
                 //Establecimiento de la conexión 
-                $consultaSQLDeSeleccion = "select * from DB214DWESProyectoTema4.Departamento";
+                $consultaSQLDeSeleccion = "select * from Departamento";
                 
                 $miDB = new PDO(HOST, USER, PASSWORD);
                 

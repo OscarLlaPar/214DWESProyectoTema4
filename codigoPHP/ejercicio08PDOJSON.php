@@ -21,7 +21,7 @@ and open the template in the editor.
                 //Establecimiento de la conexión 
                 $miDB = new PDO(HOST, USER, PASSWORD);
                 $miDB->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                $consultaSQLDeSeleccion = "select * from DB214DWESProyectoTema4.Departamento";
+                $consultaSQLDeSeleccion = "select * from Departamento";
                 $resultadoConsulta = $miDB->prepare($consultaSQLDeSeleccion);
                 $resultadoConsulta->execute();
                 $aDepartamentos = [];

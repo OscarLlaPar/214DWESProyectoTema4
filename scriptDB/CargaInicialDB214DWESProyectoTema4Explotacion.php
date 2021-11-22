@@ -10,7 +10,7 @@ try{ //Dentro va el código susceptible de dar error
                         ("DOS", "Segundo departamento", null, 66.66),
                         ("TRE", "Tercer departamento", null, 1.11)
                     QUERY);
-                $miDB->execute();
+                $consulta->execute();
             }
             catch(PDOException $miExceptionPDO){ //Lo que se muestra en caso de error
                 echo "Error: ".$miExceptionPDO->getMessage(); //Mensaje de error
