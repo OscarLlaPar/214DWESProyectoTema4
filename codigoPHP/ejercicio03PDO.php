@@ -146,7 +146,7 @@ and open the template in the editor.
                         
                         $miDB -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                         //Elaboración y preparación de la consulta
-                        $consulta = 'SELECT * FROM Departamento WHERE CodDepartamento = '.$_REQUEST['codigo']."'";
+                        $consulta = "SELECT * FROM Departamento WHERE CodDepartamento = '".$_REQUEST[codigo]."'";
                         $resultadoConsulta = $miDB->prepare($consulta);
                         //Ejecución de la consulta
                         $resultadoConsulta->execute();

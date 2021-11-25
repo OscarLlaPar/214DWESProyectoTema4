@@ -28,6 +28,8 @@ and open the template in the editor.
                 
                 $miDB->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 
+                $miDB->beginTransaction(); 
+                
                 $resultadoConsulta = $miDB->prepare(<<<QUERY
                     INSERT INTO Departamento
                     VALUES (:codDepartamento, :descDepartamento, :fechaBaja, :volumenNegocio);
@@ -55,7 +57,9 @@ and open the template in the editor.
                     // Ejecución del select.
                     $resultadoConsulta->execute();
                 }
+                if($miDB->commit()){
                 echo "<p>Fichero XML cargado</p>";
+                }
             }
             catch(PDOException $miExceptionPDO){
                 echo "Error: ".$miExceptionPDO->getMessage();

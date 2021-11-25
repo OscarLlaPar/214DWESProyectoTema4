@@ -40,7 +40,7 @@ and open the template in the editor.
                 $miDB->beginTransaction(); 
                 
                 //Preparación de la consulta
-                $oConsulta = $miDB->prepare(<<<QUERY
+                $consulta = $miDB->prepare(<<<QUERY
                             insert into Departamento
                             values (:codDepartamento, :descDepartamento, null, :volumenNegocio)
                     QUERY);
@@ -52,7 +52,7 @@ and open the template in the editor.
                         ':volumenNegocio' => $aDepartamento['volumenNegocio']
                     ];
                     //Ejecución de la consulta tras cada asignación
-                    $oConsulta->execute($aParametros);
+                    $consulta->execute($aParametros);
                     
                 }
                 //Efectuar la transacción (Si algo va mal no se inserta nada)

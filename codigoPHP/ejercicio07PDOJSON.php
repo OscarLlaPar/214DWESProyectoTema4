@@ -29,7 +29,7 @@ and open the template in the editor.
                 $datos= json_decode($json, true);
                 
                 
-                
+                $miDB->beginTransaction(); 
                 foreach($datos as $fila){
                     $oConsulta = $miDB->prepare(<<<QUERY
                             insert into Departamento
@@ -42,9 +42,10 @@ and open the template in the editor.
                         ':volNeg' => $fila['VolumenNegocio']
                     ];
                 
-                    if($oConsulta->execute($aColumnas)){
-                        echo "Fila insertada <br>";
-                    }
+                    $oConsulta->execute($aColumnas);
+                }
+                if($miDB->commit()){
+                    echo "<strong>Fichero cargado</strong>";
                 }
             }
             catch(PDOException $miExceptionPDO){

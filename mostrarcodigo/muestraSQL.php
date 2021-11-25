@@ -14,16 +14,16 @@ and open the template in the editor.
     </head>
     <body>
         <h1>Scripts de la base de datos</h1>
-        <h2>Crear</h2>
-        <?php highlight_file("../scriptDB/CreaDB214DWESProyectoTema4.sql");?>
-        <h2>Borrar</h2>
-        <?php highlight_file("../scriptDB/BorraDB214DWESProyectoTema4.sql");?>
-        <h2>Carga Inicial</h2>
-        <?php highlight_file("../scriptDB/CargaInicialDB214DWESProyectoTema4.sql");?>
+        <h2>scriptDB/CreaDB214DWESProyectoTema4.php</h2>
+        <?php highlight_file("../scriptDB/CreaDB214DWESProyectoTema4.php");?>
+        <h2>scriptDB/BorraDB214DWESProyectoTema4.php</h2>
+        <?php highlight_file("../scriptDB/BorraDB214DWESProyectoTema4.php");?>
+        <h2>scriptDB/CargaInicialDB214DWESProyectoTema4.php</h2>
+        <?php highlight_file("../scriptDB/CargaInicialDB214DWESProyectoTema4.php");?>
         <h1>Configuración del a base de datos</h1>
-        <h2>PDO</h2>
+        <h2>config/confDBPDO.php</h2>
         <?php highlight_file("../config/confDBPDO.php");?>
-        <h2>MySQLi</h2>
+        <h2>config/confDBMySQLi.php</h2>
         <?php highlight_file("../config/confDBMySQLi.php");?>
     </body>
 </html>

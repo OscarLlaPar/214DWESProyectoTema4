@@ -59,6 +59,17 @@ td{
     padding: 5px 10px 5px 10px;
     
 }
+.scripts{
+    font-size:18px;
+}
+.scripts td a{
+    font-size:18px;
+    color: #767BFF;
+    transition: all 0.4s;
+}
+.scripts td a:hover{
+    color: #00FFDD;
+}
 footer{
     background-color: #0A001A;
     color: #767BFF;

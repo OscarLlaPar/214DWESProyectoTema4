@@ -18,11 +18,20 @@ and open the template in the editor.
             <a href="../ProyectoDWES/indexProyectoDWES.php"><div class="cuadro" id="arriba">&#60;</div></a>
         </header>
         <main>
-            <p>Scripts y configuración de la base de datos</p>
-            <p><a href="scriptDB/CreaDB214DWESProyectoTema4Explotacion.php">Crear</a></p>
-            <p><a href="scriptDB/CargaInicialDB214DWESProyectoTema4Explotacion.php">Carga inicial</a></p>
-            <p><a href="scriptDB/BorraDB214DWESProyectoTema4Explotacion.php">Borrar</a></p>
-            <p><a href="mostrarcodigo/muestraSQL.php" class="linkBD">Mostrar</a></p>
+            <table class="scripts">
+                <tr>
+                    <th>
+                        Scripts
+                    </th>
+                    <td><a href="scriptDB/CreaDB214DWESProyectoTema4.php">Crear DB</a></td>
+                    <td><a href="scriptDB/CargaInicialDB214DWESProyectoTema4.php">Carga inicial DB</a></td>
+                    <td><a href="scriptDB/BorraDB214DWESProyectoTema4.php">Borrar DB</a></td>
+                </tr>
+                <tr>
+                    <th>Mostrar código</th>
+                    <td colspan="3"><a href="mostrarcodigo/muestraSQL.php">Muestra de scripts y configuración DB</a></td>
+                </tr>
+            </table>
             <table>
                 <tr>
                     <td rowspan="2">Ejercicio 1 — Conexión a la base de datos con la cuenta usuario y tratamiento de errores</td>
