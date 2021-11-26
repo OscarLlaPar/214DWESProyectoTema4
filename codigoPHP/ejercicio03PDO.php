@@ -146,12 +146,15 @@ and open the template in the editor.
                         
                         $miDB -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                         //Elaboración y preparación de la consulta
-                        $consulta = "SELECT * FROM Departamento WHERE CodDepartamento = '".$_REQUEST[codigo]."'";
+                    $consulta = "SELECT * FROM Departamento WHERE CodDepartamento = '{$_REQUEST['codigo']}'";
+                        var_dump($_REQUEST['codigo']);
                         $resultadoConsulta = $miDB->prepare($consulta);
                         //Ejecución de la consulta
                         $resultadoConsulta->execute();
+                        var_dump($resultadoConsulta);
                         //Carga de una fila del resultado en una variable
-                        $registroConsulta = $resultadoConsulta->fetchObject();
+                        $registroConsulta = $resultadoConsulta->fetch(PDO::FETCH_OBJ);
+                        var_dump($registroConsulta);
                         if(!is_null($registroConsulta)){ 
                             $aErrores['codigo']= "Código duplicado."; 
                         }
