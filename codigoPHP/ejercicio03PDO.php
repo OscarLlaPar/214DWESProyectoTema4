@@ -140,32 +140,37 @@ and open the template in the editor.
                 $aErrores['codigo']= validacionFormularios::comprobarAlfabetico($_REQUEST['codigo'],3,3,1);
                 //Validación de clave primaria (solo en caso de que la función la confirme como válida)
                 if($aErrores['codigo'] == null){
-                    try{
-                        //Establecimiento de la conexión
-                        $miDB = new PDO(HOST, USER, PASSWORD);
-                        
-                        $miDB -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                        //Elaboración y preparación de la consulta
-                    $consulta = "SELECT * FROM Departamento WHERE CodDepartamento = '{$_REQUEST['codigo']}'";
-                        var_dump($_REQUEST['codigo']);
-                        $resultadoConsulta = $miDB->prepare($consulta);
-                        //Ejecución de la consulta
-                        $resultadoConsulta->execute();
-                        var_dump($resultadoConsulta);
-                        //Carga de una fila del resultado en una variable
-                        $registroConsulta = $resultadoConsulta->fetch(PDO::FETCH_OBJ);
-                        var_dump($registroConsulta);
-                        if(!is_null($registroConsulta)){ 
-                            $aErrores['codigo']= "Código duplicado."; 
-                        }
-                    //Muestra de posibles errores    
-                    }catch(PDOException $miExceptionPDO){
-                        echo "Error: ".$miExceptionPDO->getMessage();
-                         echo "<br>";
-                        echo "Código de error: ".$miExceptionPDO->getCode();
-                    }finally{
-                        unset($miDB);
+                    if(strtoupper($_REQUEST['codigo'])!=$_REQUEST['codigo']){
+                        $aErrores['codigo']= "El código debe estar en mayúsculas."; 
                     }
+                    else{
+                        try{
+                            //Establecimiento de la conexión
+                            $miDB = new PDO(HOST, USER, PASSWORD);
+
+                            $miDB -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                            //Elaboración y preparación de la consulta
+                            $consulta=<<<QUERY
+                                SELECT * FROM Departamento WHERE CodDepartamento = '$_REQUEST[codigo]'
+                                QUERY;
+                            $resultadoConsulta = $miDB->prepare($consulta);
+                            //Ejecución de la consulta
+                            $resultadoConsulta->execute();
+                            //Carga de una fila del resultado en una variable
+                            $registroConsulta = $resultadoConsulta->fetch(PDO::FETCH_OBJ);
+                            if($registroConsulta){ 
+                                $aErrores['codigo']= "Código duplicado."; 
+                            }
+                        //Muestra de posibles errores    
+                        }catch(PDOException $miExceptionPDO){
+                            echo "Error: ".$miExceptionPDO->getMessage();
+                             echo "<br>";
+                            echo "Código de error: ".$miExceptionPDO->getCode();
+                        }finally{
+                            unset($miDB);
+                        }
+                    }
+
                 }
                 $aErrores['descripcion']= validacionFormularios::comprobarAlfanumerico($_REQUEST['descripcion'],50,3,1);
                 $aErrores['volumenNegocio']= validacionFormularios::comprobarFloat($_REQUEST['volumenNegocio'],PHP_FLOAT_MAX,0,1);
