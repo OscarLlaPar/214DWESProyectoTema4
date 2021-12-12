@@ -26,23 +26,24 @@ and open the template in the editor.
             /*
             * Ejercicio 08
             * @author Óscar Llamas Parra - oscar.llapar@educa.jcyl.es - https://github.com/OscarLlaPar
+            * @version 1.0 
             * Última modificación: 15/11/2021
             */
             //Incluir el archivo de configuración
             include '../config/confDBPDO.php';
-            //----------------------XML--------------------------------------
             try{
-                
-                
                 //Establecimiento de la conexión 
-                $consultaSQLDeSeleccion = "select * from Departamento";
-                
                 $miDB = new PDO(HOST, USER, PASSWORD);
                 
                 $miDB->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 
+                //Creación de la consulta
+                $consultaSQLDeSeleccion = "select * from Departamento";
+                
+                //Preparación de la consulta
                 $resultadoConsulta = $miDB->prepare($consultaSQLDeSeleccion);
                 
+                //Ejecución de la consulta
                 $resultadoConsulta->execute();
                 
                 $oDocumento = new DOMDocument(); //Creación del documento en el que escribir los datos
@@ -53,6 +54,7 @@ and open the template in the editor.
                 $elementoDepartamentos = $oDocumento->createElement('departamentos');
                 $nodoDepartamentos = $oDocumento->appendChild($elementoDepartamentos);
                 
+                //Carga de un ragistro desde la base de datos
                 $registroObjeto = $resultadoConsulta->fetchObject();
                 
                 while($registroObjeto){
@@ -71,13 +73,14 @@ and open the template in the editor.
                     
                     $elementoVolumenNegocio = $oDocumento->createElement('volumenNegocio', $registroObjeto->VolumenNegocio);
                     $elementoDepartamento->appendChild($elementoVolumenNegocio);
-                    
+                    //Carga de otro ragistro desde la base de datos
                     $registroObjeto = $resultadoConsulta->fetchObject();
                 }
                 
                 
                 echo '<p>Escrito: ' . $oDocumento->save("../tmp/departamentos.xml") . ' bytes</p>';
             }
+            //Tratamiento de errores
             catch(PDOException $miExceptionPDO){
                 echo "Error: ".$miExceptionPDO->getMessage();
                 echo "<br>";

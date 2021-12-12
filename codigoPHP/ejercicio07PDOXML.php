@@ -14,13 +14,12 @@ and open the template in the editor.
             /*
             * Ejercicio 07
             * @author Óscar Llamas Parra - oscar.llapar@educa.jcyl.es - https://github.com/OscarLlaPar
+            * @version 1.0 
             * Última modificación: 15/11/2021
             */
-        //Incluir el archivo de configuración
+            //Incluir el archivo de configuración
             include '../config/confDBPDO.php';
             try{
-                
-                
                 //Establecimiento de la conexión 
                 $consultaSQLDeSeleccion = "select * from DB214DWESProyectoTema4.Departamento";
                 
@@ -28,21 +27,28 @@ and open the template in the editor.
                 
                 $miDB->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 
+                //Comenzar transacción (desactivar auto-commit)
                 $miDB->beginTransaction(); 
                 
+                //Preparación de la consulta
                 $resultadoConsulta = $miDB->prepare(<<<QUERY
                     INSERT INTO Departamento
                     VALUES (:codDepartamento, :descDepartamento, :fechaBaja, :volumenNegocio);
                 QUERY);
                 
-                
+                //Creación del documento DOM
                 $oDoc = new DOMDocument();
+                
+                //Formato para que quede bonito
                 $oDoc -> formatOutput = true;
                 
+                //Carga del fichero .xml en el DOM creado
                 $oDoc->load('../tmp/departamentos.xml');
                 
+                //Carga del elemento "departamento"
                 $nodeDepartamento = $oDoc->getElementsByTagName('departamento');
                 
+                //Carga de todos los campos (elementos) de cada departamento
                 foreach ($nodeDepartamento as $departamento) {
                     $codDep = $departamento->getElementsByTagName('codDepartamento')->item(0)->nodeValue;
                     $descDep = $departamento->getElementsByTagName('descDepartamento')->item(0)->nodeValue;
@@ -57,10 +63,12 @@ and open the template in the editor.
                     // Ejecución del select.
                     $resultadoConsulta->execute();
                 }
+                //Si se efectuan los cambios se informa al usuario
                 if($miDB->commit()){
                 echo "<p>Fichero XML cargado</p>";
                 }
             }
+            //Tratamiento de errores
             catch(PDOException $miExceptionPDO){
                 echo "Error: ".$miExceptionPDO->getMessage();
                 echo "<br>";

@@ -26,6 +26,7 @@ and open the template in the editor.
             /*
             * Ejercicio 02
             * @author Óscar Llamas Parra - oscar.llapar@educa.jcyl.es - https://github.com/OscarLlaPar
+            * @version 1.0 
             * Última modificación: 08/11/2021
             */
             //Incluir el archivo de configuración
@@ -41,6 +42,7 @@ and open the template in the editor.
                 $resultadoConsulta->execute();
                 //Carga de una fila (de manera anticipada) sobre la variable "registroObjeto"
                 $registroObjeto = $resultadoConsulta->fetch(PDO::FETCH_OBJ);
+                //Mostrado del número de registros
                 echo "<h1>".$resultadoConsulta->rowCount()." registros</h1>";
                 //Creación de la tabla para mostrar los datos
                 echo "<table>";

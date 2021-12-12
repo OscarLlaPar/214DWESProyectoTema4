@@ -113,6 +113,7 @@ and open the template in the editor.
             /*
             * Ejercicio 04
             * @author Óscar Llamas Parra - oscar.llapar@educa.jcyl.es - https://github.com/OscarLlaPar
+            * @version 1.0
             * Última modificación: 09/11/2021
             */
             //Incluir el archivo de configuración
@@ -130,7 +131,6 @@ and open the template in the editor.
                 'busqueda' => null
             ];
             
-            
             // Si ya se ha pulsado el boton "Enviar"
             if(!empty($_REQUEST['enviar'])){
                 //Uso de las funciones de validación, que devuelven el mensaje de error cuando corresponde.
@@ -144,7 +144,6 @@ and open the template in the editor.
                         $entradaOK=false;
                     }
                 }
-                
             }
             //Si no se ha pulsado el botón "Enviar" (es la primera vez)
             else{
@@ -154,16 +153,18 @@ and open the template in the editor.
             if($entradaOK){
                 //Tratamiento de los datos
                 try{
-                    $busqueda=$_REQUEST['busqueda'];
+                    $aRespuestas['busqueda']=$_REQUEST['busqueda'];
                     //Establecimiento de la conexión 
                     $miDB = new PDO(HOST, USER, PASSWORD);
                     $miDB->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                    $consultaSQLDeSeleccion = "select * from Departamento where DescDepartamento like '%".$busqueda."%'";
+                    $consultaSQLDeSeleccion = "select * from Departamento where DescDepartamento like '%".$aRespuestas['busqueda']."%'";
                     //Preparación y ejecución de las consultas creadas en la condición
                     $resultadoConsulta = $miDB->prepare($consultaSQLDeSeleccion);
                     $resultadoConsulta->execute();
                     //Carga del registro en una variable
                     $registroObjeto = $resultadoConsulta->fetch(PDO::FETCH_OBJ);
+                    //Mostrado del número de registros
+                echo "<h1>".$resultadoConsulta->rowCount()." registros encontrados</h1>";
                     //Creación de la tabla
                     echo "<table>";
                     //Recorrido de todos los registros
@@ -194,27 +195,21 @@ and open the template in the editor.
             //Si las respuestas no están bien (o es la primera vez)
             else{
               ?>
-            <header>
-                       
-            </header>    
-            <main>
-                    
-                    <form name="ejercicio03" action="ejercicio04PDO.php" method="post">
-                        <fieldset>
+            <main> 
+                <form name="ejercicio03" action="ejercicio04PDO.php" method="post">
+                    <fieldset>
                             <legend>Buscar departamento: </legend>
-                                    <label for="busqueda">Buscar por descripción:</label>
-                                    <input id="busqueda" type="text" name="busqueda" value="<?php echo (isset($_REQUEST['busqueda']))?$_REQUEST['busqueda']:"";?>" >
-        <?php
-                echo (!is_null($aErrores['busqueda']))?"<span>$aErrores[busqueda]</span>":"";
-        ?>           
-                                              
-                        </fieldset>
-                                        <input id="enviar" type="submit" value="Enviar" name="enviar"/>  
+                                <label for="busqueda">Buscar por descripción:</label>
+                                <input id="busqueda" type="text" name="busqueda" value="<?php echo (isset($_REQUEST['busqueda']))?$_REQUEST['busqueda']:"";?>" >
+                                <?php
+                                    echo (!is_null($aErrores['busqueda']))?"<span>$aErrores[busqueda]</span>":"";
+                                ?>                                 
+                    </fieldset>
+                    <input id="enviar" type="submit" value="Enviar" name="enviar"/>  
         <?php    
             }
-            
         ?>
-                    </form>
+                </form>
             </main>
     </body>
 </html>

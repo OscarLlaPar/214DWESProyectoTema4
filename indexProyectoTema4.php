@@ -1,9 +1,4 @@
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <html>
     <head>
         <meta charset="UTF-8">
@@ -26,8 +21,6 @@ and open the template in the editor.
                     <td><a href="scriptDB/CreaDB214DWESProyectoTema4.php">Crear DB</a></td>
                     <td><a href="scriptDB/CargaInicialDB214DWESProyectoTema4.php">Carga inicial DB</a></td>
                     <td><a href="scriptDB/BorraDB214DWESProyectoTema4.php">Borrar DB</a></td>
-                </tr>
-                <tr>
                     <th>Mostrar código</th>
                     <td colspan="3"><a href="mostrarcodigo/muestraSQL.php">Muestra de scripts y configuración DB</a></td>
                 </tr>
@@ -172,7 +165,7 @@ and open the template in the editor.
         </main>
         <footer>
             <p>
-                Óscar Llamas Parra &nbsp;
+                <a href="https://daw214.ieslossauces.es/">Óscar Llamas Parra</a>
                 <a href="https://github.com/OscarLlaPar/" target="__blank"><img src="webroot/img/github.png" alt="Github"></img></a>
             </p>
             <p>
