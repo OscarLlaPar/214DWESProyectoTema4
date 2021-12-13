@@ -9,6 +9,7 @@
             /*
             * Ejercicio 01
             * @author Óscar Llamas Parra - oscar.llapar@educa.jcyl.es - https://github.com/OscarLlaPar
+            * @version 1.0
             * Última modificación: 04/11/2021
             */
             include '../config/confDBMySQLi.php';

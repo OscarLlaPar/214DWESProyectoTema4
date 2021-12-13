@@ -113,6 +113,7 @@ and open the template in the editor.
             /*
             * Ejercicio 03
             * @author Óscar Llamas Parra - oscar.llapar@educa.jcyl.es - https://github.com/OscarLlaPar
+            * @version 1.0
             * Última modificación: 09/11/2021
             */
             //Incluir el archivo de configuración
@@ -254,37 +255,29 @@ and open the template in the editor.
             //Si las respuestas no están bien (o es la primera vez)
             else{
               ?>
-            <header>
-                       
-            </header>    
             <main>
-                    
-                    <form name="ejercicio03" action="ejercicio03PDO.php" method="post">
-                        <fieldset>
-                            <legend>Insertar nuevo departamento: </legend>
-                                    <label for="codigo">Código del departamento<span>*</span>:</label>
-                                    <input id="codigo" type="text" name="codigo" value="<?php echo (isset($_REQUEST['codigo']))?$_REQUEST['codigo']:"";?>" >
-                                
-                                    <?php
-                echo (!is_null($aErrores['codigo']))?"<span>$aErrores[codigo]</span>":"";
-        ?>              
-                                    <br>
-                                    <label for="descripcion">Descripción del departamento<span>*</span>:</label>
-                                    <input id="descripcion" type="text" name="descripcion" value="<?php echo (isset($_REQUEST['descripcion']))?$_REQUEST['descripcion']:"";?>" >
-                                
-                                    <?php
-                echo (!is_null($aErrores['descripcion']))?"<span>$aErrores[descripcion]</span>":"";
-        ?>            
-                                        <br>
-                                        <label for="volumenNegocio">Volumen de negocio (€)<span >*</span>:</label>
-                                        <input id="volumenNegocio" type="text" name="volumenNegocio" value="<?php echo (isset($_REQUEST['volumenNegocio']))?$_REQUEST['volumenNegocio']:"";?>" >  
-                                          
-        <?php
-                echo (!is_null($aErrores['volumenNegocio']))?"<span >$aErrores[volumenNegocio]</span>":"";
-        ?>
-                                        
-                        </fieldset>
-                                        <input id="enviar" type="submit" value="Enviar" name="enviar"/>  
+                <form name="ejercicio03" action="ejercicio03PDO.php" method="post">
+                    <fieldset>
+                        <legend>Insertar nuevo departamento: </legend>
+                        <label for="codigo">Código del departamento<span>*</span>:</label>
+                        <input id="codigo" type="text" name="codigo" value="<?php echo (isset($_REQUEST['codigo']))?$_REQUEST['codigo']:"";?>" >
+                        <?php
+                            echo (!is_null($aErrores['codigo']))?"<span>$aErrores[codigo]</span>":"";
+                        ?>              
+                        <br>
+                        <label for="descripcion">Descripción del departamento<span>*</span>:</label>
+                        <input id="descripcion" type="text" name="descripcion" value="<?php echo (isset($_REQUEST['descripcion']))?$_REQUEST['descripcion']:"";?>" >
+                        <?php
+                            echo (!is_null($aErrores['descripcion']))?"<span>$aErrores[descripcion]</span>":"";
+                        ?>            
+                        <br>
+                        <label for="volumenNegocio">Volumen de negocio (€)<span >*</span>:</label>
+                        <input id="volumenNegocio" type="text" name="volumenNegocio" value="<?php echo (isset($_REQUEST['volumenNegocio']))?$_REQUEST['volumenNegocio']:"";?>" >            
+                        <?php
+                            echo (!is_null($aErrores['volumenNegocio']))?"<span >$aErrores[volumenNegocio]</span>":"";
+                        ?>
+                    </fieldset>
+                    <input id="enviar" type="submit" value="Enviar" name="enviar"/>  
         <?php    
             }
             

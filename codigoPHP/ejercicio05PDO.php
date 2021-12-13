@@ -14,6 +14,7 @@ and open the template in the editor.
             /*
             * Ejercicio 05
             * @author Óscar Llamas Parra - oscar.llapar@educa.jcyl.es - https://github.com/OscarLlaPar
+            * @version 1.0 
             * Última modificación: 10/11/2021
             */
             //Incluir el archivo de configuración
