@@ -166,7 +166,7 @@
         <footer>
             <p>
                 <a href="https://daw214.ieslossauces.es/">Óscar Llamas Parra</a>
-                <a href="https://github.com/OscarLlaPar/" target="__blank"><img src="webroot/img/github.png" alt="Github"></img></a>
+                <a href="https://github.com/OscarLlaPar/214DWESProyectoTema4" target="__blank"><img src="webroot/img/github.png" alt="Github"></img></a>
             </p>
             <p>
                 DAW 2
